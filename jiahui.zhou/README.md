@@ -1,7 +1,9 @@
+
 # jiahui Zhou
 
 - https://jiahuizhounygmail.com
-- http://jiahuizhounygmail.com/aau/wnm617_class/jiahui_zhou/index.html
+- http://jiahuizhounygmail.com/aau/wnm617_class/jiahui.zhou/index.html
+- http://jiahuizhounygmail.com/aau/wnm617/jiahui.zhou/initializr/index.html
 
 #git notes
 
