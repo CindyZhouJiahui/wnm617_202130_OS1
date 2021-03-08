@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>plant tracker</title>
+
+	<!---base---->
+	<base href="/aau/wnm617_001/cindy.jiahui/">
+
+	<!---library code before local code--->
+	<link rel="stylesheet"  href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+	<link rel="stylesheet"  href="css/app.css">
+
+	<!---script---->
+	<script src="lib/js/jquery-2.2.4.min.js"></script>
+
+	<script src="js/app.js"></script>
+
+	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+
+	<!---signin form part--->
+	<section data-role="page" id="signin-page">
+	<div data-role="main">
+		<div class="plant logo" id="plant-logo-01">
+			<img src="img/plant logo.png">
+		</div>
+		<form id=signin-form>
+		<input type="text" id="signin-username">
+		<input type="password" id="signin-password">
+		<!---SIGN IN page--->
+		<div>
+			<a href="#recent-page">Sign in</a>
+		</div>
+		</form>
+	</div>
+	</section>
+
+
+<!---RECENT PAGE--->
+	<section data-role="page" id="recent-page">
+	<div data-role="main">
+		Map
+	</div>
+	<footer data-role="footer">
+		<a href="#recent-page">Recent page</a>
+		<a href="#list-page">list page</a>
+		<a href="#user-profile-page">user profile page</a>
+	</footer>
+	</section>
+
+
+<!---LIST PAGE--->
+	<section data-role="page" id="list-page">
+		<header data-role="header">
+			<h1>Search</h1>
+		</header>
+	<div data-role="main">
+<!----list open-->
+<ul>
+	<li><a href="#plant-profile-page">plant1</a></li>
+	<li><a href="#plant-profile-page">plant2</a></li>
+	<li><a href="#plant-profile-page">plant3</a></li>
+	<li><a href="#plant-profile-page">plant4</a></li>
+	<li><a href="#plant-profile-page">plant5</a></li>
+	<li><a href="#plant-profile-page">plant6</a></li>
+</ul>
+	
+	</div>
+	<footer data-role="footer">
+		<a href="#recent-page">Recent page</a>
+		<a href="#list-page">list page</a>
+		<a href="#user-profile-page">user profile page</a>
+	</footer>
+	</section>
+	
+
+	<!---User profile PAGE--->
+	<section data-role="page" id="user-profile-page">
+	<div data-role="main">
+		User profile page
+	</div>
+	<footer data-role="footer">
+		<a href="#recent-page">Recent page</a>
+		<a href="#list-page">list page</a>
+		<a href="#user-profile-page">user profile page</a>
+	</footer>
+	</section>
+</body>
+</html>
