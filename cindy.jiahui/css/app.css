@@ -1,0 +1,110 @@
+/* CSS RESET */
+
+*, *::after, *::before {
+   box-sizing:border-box;
+}
+
+:root {
+   --font-sans:Helvetica, Arial, sans-serif;
+   --font-serif:Cambria, Georgia, serif;
+
+
+   --color-neutral-light:#3ac592;
+   --color-neutral-medium:#609f88;
+   --color-neutral-dark:#3cc3a5;
+
+   --color-main-light:#a0e090;
+   --color-main-medium:#38612e;
+   --color-main-dark:#0f3505;
+
+   --header-height:3rem;
+}
+
+body {
+   margin:0;
+   font-size:100%;
+   font-family:var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family:var(--font-sans);
+}
+
+a {
+   color:inherit;
+   text-decoration:none;
+   font-weight:bold;
+}
+a:hover {
+   text-decoration: underline;
+}
+
+
+
+
+
+/* Layout Classes */
+
+.hidden { display:none; }
+
+.display-flex { display:flex; }
+.display-block { display:block; }
+.display-inline-flex { display:inline-flex; }
+.display-inline-block { display:inline-block; }
+
+.flex-stretch { flex:1 1 auto; }
+.flex-none { flex:none; }
+
+.flex-align-center { align-items:center; }
+.flex-justify-center { justify-content:center; }
+.flex-vertical{flex-direction: column;}
+
+
+/*page elements */
+[data-role="page"]{
+   
+}
+
+
+/*FORM ELEMENTS */
+.form-control {
+    margin: 1em 0; 
+}
+/**Ui Rule**/
+.ui-mobile .form-label {
+    margin: 1em 0;
+    font-size: 0.7em;
+    color: var(--color-neutral-medium);
+}
+.form-input {
+    width: 100%;
+    display: inline-block;
+    border: 1px solid var(--color-neutral-medium);
+    margin: 0;
+    padding: 0.5em 1em;
+    border-radius: 50px;
+    outline: 0;
+    font: inherit;
+}
+.form-button{
+    margin: 0;
+    padding: 0.5em 1em;
+    border-radius: 50px;
+    border-width: 0;
+    background-color: var(--color-neutral-light);
+    outline: 0;
+    width: 100%;
+    display: inline-block;
+    font:inherit;
+    text-align: center;
+    cursor: pointer;
+}
+.form-button:hover {
+   text-decoration: none;
+   background-color: var(--color-neutral-medium);
+}

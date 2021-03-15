@@ -15,6 +15,7 @@
 	<!---script---->
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 
+	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
@@ -22,20 +23,36 @@
 <body>
 
 
-	<!---signin form part--->
+	<!---signin page--->
 	<section data-role="page" id="signin-page">
-	<div data-role="main">
+	<div data-role="main" class="display-flex flex-vertical">
+		<!--div.flex-stretch-->
+		<div class="flex-stretch"></div>
+		<div class="flex-none">
 		<div class="plant logo" id="plant-logo-01">
 			<img src="img/plant logo.png">
 		</div>
-		<form id=signin-form>
-		<input type="text" id="signin-username">
-		<input type="password" id="signin-password">
+	<!---form part for signin--->
+		<form class="form" id="signin-form" data-ajax="false" style="padding: 1em">
+		<div class="form-control">
+			<!---label.form-label--->
+			<label for="signin-username" class="form-label">Username</label>
+			<input class="form-input" id="signin-username" data-role="none">
+		</div>
+
+		<div class="form-control">
+			<label for="signin-password" class="form-label">Password</label>
+			<input class="form-input" id="signin-password" data-role="none">
+		</div>
+
+
+
 		<!---SIGN IN page--->
-		<div>
-			<a href="#recent-page">Sign in</a>
+		<div class="form-control">
+			<a href="#recent-page" class="form-button">Sign in</a>
 		</div>
 		</form>
+	</div>
 	</div>
 	</section>
 
@@ -44,6 +61,9 @@
 	<section data-role="page" id="recent-page">
 	<div data-role="main">
 		Map
+	</div>
+	<div class="map" id="map">
+		<img src="img/map.png">
 	</div>
 	<footer data-role="footer">
 		<a href="#recent-page">Recent page</a>
@@ -60,6 +80,7 @@
 		</header>
 	<div data-role="main">
 <!----list open-->
+<!----ul>li*10>a[href=#plant-profile-page]>{plant $} -->
 <ul>
 	<li><a href="#plant-profile-page">plant1</a></li>
 	<li><a href="#plant-profile-page">plant2</a></li>
@@ -81,7 +102,10 @@
 	<!---User profile PAGE--->
 	<section data-role="page" id="user-profile-page">
 	<div data-role="main">
-		User profile page
+		User profile 
+	<p>
+		<a href="#signin-page">signout</a>
+	</p>
 	</div>
 	<footer data-role="footer">
 		<a href="#recent-page">Recent page</a>
@@ -89,5 +113,19 @@
 		<a href="#user-profile-page">user profile page</a>
 	</footer>
 	</section>
+
+
+	<!---Plant profile page-->
+	<section data-role="page" id="plant-profile-page">
+	<header data-role="header">
+	<h1>Search</h1>	
+	<a href="#" data-rel="back">Back</a>
+	</header>
+	<div data-role="main">
+		plant profile
+	</div>
+	</section>
+
+
 </body>
 </html>

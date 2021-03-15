@@ -1,0 +1,174 @@
+/* CSS RESET */
+
+*, *::after, *::before {
+   box-sizing:border-box;
+}
+
+:root {
+   --font-sans:Helvetica, Arial, sans-serif;
+   --font-serif:Cambria, Georgia, serif;
+
+
+   --color-neutral-light:#ede9e9;
+   --color-neutral-medium:#999191;
+   --color-neutral-dark:#343030;
+
+   --color-main-light:#e5f1f2;
+   --color-main-medium:#4ba0a8;
+   --color-main-dark:#0a4349;
+
+   --header-height:3rem;
+}
+
+body {
+   margin:0;
+   font-size:100%;
+   font-family:var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+   font-family:var(--font-sans);
+}
+
+a {
+   color:inherit;
+   text-decoration:none;
+   font-weight:bold;
+}
+a:hover {
+   text-decoration: underline;
+}
+
+
+
+
+
+/* Layout Classes */
+.container {
+   max-width:1000px;
+   margin-right:auto;
+   margin-left:auto;
+}
+
+.hidden { display:none; }
+
+.display-flex { display:flex; }
+.display-block { display:block; }
+.display-inline-flex { display:inline-flex; }
+.display-inline-block { display:inline-block; }
+
+.flex-stretch { flex:1 1 auto; }
+.flex-none { flex:none; }
+
+.flex-align-center { align-items:center; }
+.flex-justify-center { justify-content:center; }
+
+
+
+
+/* Component Classes */
+
+.navbar {
+   background-color:var(--color-neutral-dark);
+   color:var(--color-neutral-light);
+   line-height:var(--header-height);
+}
+
+.navbar h1 {
+   font-size:1em;
+   font-family:var(--font-sans);
+   margin:0;
+}
+.navbar a {
+   display:block;
+   padding:0 0.5em;
+}
+
+
+
+.nav ul {
+   list-style-type:none;
+   margin:0;
+   padding-left:0;
+}
+
+
+
+
+
+
+/* ACCORDION */
+.accordion dt {
+    background-color: var(--color-main-medium);
+    padding: 0.5em calc(1em + 2px);
+    color: white;
+    font-weight:bold;
+    cursor:pointer;
+}
+.accordion dt~dt {
+   margin-top:1em;
+}
+.accordion dd {
+    padding: 1em;
+    margin-left: 0;
+    border: 2px solid var(--color-main-medium);
+    border-top-width:0;
+    display:none;
+}
+
+
+
+
+/* TAB GROUP */
+.tabgroup {}
+.tabgroup .tabs {
+    display: flex;
+    border-bottom: 1px solid var(--color-neutral-light);
+}
+.tabgroup .tab {
+    padding: 0.5em 1em;
+    position: relative;
+}
+.tabgroup .tab:hover {
+   background-color:var(--color-neutral-light);
+   cursor:pointer;
+}
+.tabgroup .tab::after {
+   content:'';
+   position:absolute;
+   bottom:0;
+   left:0;
+   width:100%;
+   height:0;
+   background-color:var(--color-main-medium);
+   transition:all 0.3s;
+}
+.tabgroup .tab.active::after {
+   height:3px;
+}
+.tabgroup .contents {
+   position:relative;
+   overflow:hidden;
+   height:40vh;
+}
+.tabgroup .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: white;
+    pointer-events: none;
+    opacity: 0;
+    transition:all 0.3s;
+}
+.tabgroup .content.active {
+   opacity:1;
+   pointer-events: initial;
+}
