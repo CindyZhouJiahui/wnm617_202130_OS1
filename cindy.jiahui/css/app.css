@@ -13,7 +13,7 @@
    --color-neutral-medium:#609f88;
    --color-neutral-dark:#3cc3a5;
 
-   --color-main-light:#a0e090;
+   --color-main-light:#c5f0b7;
    --color-main-medium:#38612e;
    --color-main-dark:#0f3505;
 
@@ -63,6 +63,9 @@ h1{
 #text-s
 {
   padding: 19px;
+}
+#signin-page{
+  background-color: #c5f0b7;
 }
 
 
