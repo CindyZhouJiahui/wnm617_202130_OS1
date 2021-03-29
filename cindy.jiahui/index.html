@@ -27,9 +27,10 @@
 <!---Sign In  Page---->
     <section data-role="page" id="signin-page">
       <div data-role="main" class="display-flex flex-vertical">
-         <div class="flex-stretch"></div>
+         <div class="flex-stretch">
          <div class="logo">
-         <img src="img/logo.png" alt="" height="300" width="200">
+         <img src="img/logo.png" alt="" height="250" width="150">
+         </div>
          </div>
          <div class="flex-none">
             <form class="form" id="signin-form" data-ajax="false" style="padding:1em">
@@ -176,7 +177,43 @@
 
    <section data-role="page" id="user-profile-page">
       <div data-role="main">
-         Profile
+         <div class="overscroll">
+         <img src="img/user.png" alt="">
+         <form action="" id="user-profile-form" data-ajax="false" class="form" style="padding: 1em">
+               <div class="form-control">
+                  <label for="signin-username" class="form-label">Username</label>
+                  <input class="form-input" type="text" id="signin-username" data-role="none">
+               </div>
+               <div class="form-control">
+                  <label for="signin-email" class="form-label">Email</label>
+                  <input class="form-input" type="text" id="signin-email" data-role="none">
+               </div>
+               <div class="form-control">
+                  <label for="signin-password" class="form-label">Password</label>
+                  <input class="form-input" type="password" id="submit-password" data-role="none">
+               </div>
+               <div class="form-control">
+                  <label for="signin-age" class="form-label">Age</label>
+                  <input class="form-input" type="text" id="signin-username" data-role="none">
+               </div>
+               <div class="form-control">
+                  <label for="signin-status" class="form-label">Status</label>
+                  <input class="form-input" type="text" id="signin-email" data-role="none">
+               </div>
+               <div class="form-control">
+                  <label for="signin-location" class="form-label">Location</label>
+                  <input class="form-input" type="text" id="submit-password" data-role="none">
+               </div>
+               <div class="form-control" >
+                  <a href="#recent-page" class="form-button signin-button">Save</a></div>
+                  <a href="#recent-page" class="form-button signin-button">Edit</a></div>
+                  
+
+               
+            </div>
+  </form>
+
+
 
          <div class="floater top right">
             <a href="#" class="icon" data-activate="#user-settings-modal"><img src="img/user icon.png" alt=""></a>
@@ -205,9 +242,11 @@
       </div>
       <footer data-role="footer" data-template="#footer-template"></footer>
    </section>
-	
-	
-	
+
+
+
+
+
 
 
 	<!---Plant profile page-->
@@ -217,7 +256,7 @@
 	<a href="#" data-rel="back">Back</a>
 	</header>
 	<div data-role="main">
-   <img src="img/logo 1.png" alt="" height="100%;">
+   <img src="img/logo.png" alt="" height="100%;">
    </div>
    <div class="overscroll">
    <h3>Purple flower</h3>
