@@ -4,7 +4,7 @@
 - https://jiahuizhounygmail.com
 - http://jiahuizhounygmail.com/portflio/index.html
 - http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/initializr/index.html
-- http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/index.html
+- http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/
 
 #git notes
 
