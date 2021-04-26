@@ -5,10 +5,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>plant tracker</title>
 	<!---base---->
-	<base href="/aau/wnm617_001/cindy.jiahui/">
+	<base href="  http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/">
 	<!---library code before local code--->
 	<link rel="stylesheet"  href="lib/css/jquery.mobile.structure-1.4.5.min.css">
 	<link rel="stylesheet"  href="css/app.css">
+   <!--(Font)--->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lexend&display=swap" rel="stylesheet">
+
 	<!---script---->
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 
@@ -27,12 +33,19 @@
 <!---Sign In  Page---->
     <section data-role="page" id="signin-page">
       <div data-role="main" class="display-flex flex-vertical">
-         <div class="flex-stretch">
+         <div class="flex-stretch"></div>
          <div class="logo">
          <img src="img/logo.png" alt="" height="250" width="150">
          </div>
-         </div>
+      
          <div class="flex-none">
+         <div class=text-01>
+            <h4>Welcome !
+            </h4>
+            <h5>
+               Sign in to continue
+            </h5>
+         </div>
             <form class="form" id="signin-form" data-ajax="false" style="padding:1em">
                <div class="form-control">
                   <label for="signin-username" class="form-label">Username</label>
@@ -46,13 +59,66 @@
                   <input type="submit" class="form-button" value="Sign In" data-role="none">
                </div>
             </form>
+            <div class="register">
+            <p>Don't have an account &nbsp;<a href="#register-page">Register Now!</p></a>
+            </div>
          </div>
       </div>
    </section>
 
 
 
+
+
+
+
+
+
+
+
+<!--(Sign up page)-->
+<section data-role="page" id="register-page">
+   <div data-role="main" class="display-flex flex-vertical">
+         <div class="flex-stretch"></div>
+         <div class="flex-none" style="text-align: center;">
+            <div class="U-info">Create an acccount!</div>
+         </div>
          
+<!--(Sign up form)--->
+    <div class="flex-none" style="padding:1em">
+    <form action="" id="user-profile-form" data-ajax="false" class="form" style="padding: 1em"> 
+         <div class="form-control">
+                  <label for="register-username" class="form-label" style="color: #38612e;">Username</label>
+                  <input class="form-input" type="text" id="register-username" data-role="none">
+                  </div>
+         <div class="form-control">
+                  <label for="signin-email" class="form-label">Email</label>
+                  <input class="form-input" type="text" id="signin-email" data-role="none">
+                  </div>
+        <div class="form-control">
+                  <label for="signin-password" class="form-label">Password</label>
+                  <input class="form-input" type="password" id="submit-password" data-role="none">
+                  </div>
+        <div class="form-control">
+                  <label for="signin-username" class="form-label">Confirm Password</label>
+                  <input class="form-input" type="text" id="signin-username" data-role="none">
+                  </div>
+        <div class="signin-text" style="text-align: center;">
+               Already have account? <a href="#signin-page" class="signup-link">Sign in</a>
+                  </div>
+        <div class="form-control">
+                  <input type="submit" class="form-button" value="Registered" data-role="none">
+                  </div>
+                  </form>
+                  </div>
+                  <div class="flex-stretch"></div>
+                  </div>
+</section>
+
+
+         
+
+
 
 
 
@@ -62,9 +128,9 @@
 
 
 <!---RECENT PAGE--->
-	<section data-role="page" id="recent-page">
-	<div data-role="main">
-		<img src="img/map.png">
+	<section data-role="page" id="recent-page" >
+	     <div data-role="main">
+		       <img src="img/map.png">
 	</div>
 	<footer data-role="footer" data-template="#footer-template">
 	</footer>
@@ -72,10 +138,19 @@
 	</section>
 
 
+
+
+
+
+
 <!---LIST PAGE--->
 	<section data-role="page" id="list-page">
 		<header data-role="header">
-			<h1>Plant List</h1>
+			<h4>
+         <blod>
+         Plant List
+         </blod>
+         </h4>
 		<ul>
 			<li class="flex-stretch"></li>
 			<li><a href="#" class="js-list-add-plant" 
@@ -87,93 +162,213 @@
 <div class="overscroll">
 <!----list open-->
 <!----ul>li*10>a[href=#plant-profile-page]>{plant $} -->
-<ul>
-	<li><a href="#plant-profile-page">
-      <p>plant1</p>
+
+    <div class="container"> 
+      <div class="card">
+         <div class="card_img">
 			<img src="img/f1.jpg " alt="" width="150" height="150">
-         <p>Name:</p>
-         <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-		</a>
-	</li>
-
-	<li><a href="#plant-profile-page">
-      <p>plant2</p>
-      <img src="img/f1.jpg " alt="" width="150" height="150">
-      <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-   </a></li>
-
-	<li><a href="#plant-profile-page">
-      <p>plant3</p>
-   <img src="img/f1.jpg " alt="" width="150" height="150">
-      <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-   </a></li>
-	
-
-
-   <li><a href="#plant-profile-page">
-      <p>plant4</p>
-   <img src="img/f1.jpg " alt="" width="150" height="150">
-    <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-
-   </a></li>
-
-
-   <li><a href="#plant-profile-page">
-      <p>plant5</p>
-   <img src="img/f1.jpg " alt="" width="150" height="150">
-   <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-   </a></li>
-
-
-   <li><a href="#plant-profile-page">
-      <p>plant6</p>
-   <img src="img/f1.jpg " alt="" width="150" height="150">
-   <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-   </a></li>
-
-
-   <li><a href="#plant-profile-page">
-      <p>plant7</p>
-   <img src="img/f1.jpg " alt="" width="150" height="150">
-   <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-   </a></li>
-
-
-   <li><a href="#plant-profile-page">
-      <p>plant8</p>
-   <img src="img/f1.jpg " alt="" width="150" height="150">
-   <p>Name:</p>
-      <p>Type:</p>
-      <p>Season:</p>
-      <button>edit</button>
-   </a></li>
-
-</ul>
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+  <div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+<div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+<div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+<div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+<div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+<div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+<div class="card">
+         <div class="card_img">
+         <img src="img/f1.jpg " alt="" width="150" height="150">
+      </div>
+      <div class="plant-info">
+      <h4>
+           <blod>
+            Type: 
+           </blod>
+      </h4>
+      <p>
+           hydrangea
+      </p>
+       <h4>
+           <blod>
+            Color:
+           </blod>
+      </h4>
+      <p>
+         blue
+      </p>
+      <a href="#plant-profile-page">Read More</a>
+</div>
+</div>
+</div>
 </div>
 </div>
 <footer data-role="footer" data-template="#footer-template">
    </footer>
+
+
+
+
+
+
 <!---add new plant--->
+   <section data-role="page" id="add-plant"></section>
    <div class="modal" id="list-add-modal">
          <div class="overscroll">
          <div class="modal-back" data-deactivate="#list-add-modal"></div>
@@ -200,7 +395,8 @@
                </div>
             </div>
          </form>
-      </div></div>
+      </div>
+   </div>
    </section>
 
 

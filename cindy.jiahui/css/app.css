@@ -1,12 +1,14 @@
 /* CSS RESET */
 
 *, *::after, *::before {
+   margin: 0;
+   padding: 0;
    box-sizing:border-box;
 }
 
 :root {
-   --font-sans:Helvetica, Arial, sans-serif;
-   --font-serif:Cambria, Georgia, serif;
+   --font-sans:'Lexend','Arial',sans-serif;
+   --font-serif:'EB Garamond',' Georgia' ,serif;
 
 
    --color-neutral-light:#3ac592;
@@ -29,14 +31,26 @@ body {
    font-family:var(--font-sans);
 }
 
+
 h1,
+h3
+ {
+   font-family:var(--font-serif);
+}
+
 h2,
-h3,
 h4,
-h5,
 h6 {
+  font-family:var(--font-sans);
+}
+
+h4,a{
    font-family:var(--font-sans);
 }
+h5,p{
+  font-family:var(--font-serif);
+}
+
 
 a {
    color:inherit;
@@ -47,25 +61,82 @@ a:hover {
    text-decoration: underline;
 }
 
+
+
+
+
 /*LOGO*/
-div.logo {
+.logo {
+    width: 40%;
+    left: 120px;
+    top: 7rem;
     position: absolute;
-    padding: 25%;
-
 }
 
 
+/*list part*/
+.container {
+    background-color: #c5f0b7;
+    padding: 1.5rem 1.5rem;
 
-/***(Font size)****/
-h1{
-  font-size: 28px bold;
+
 }
-#text-s
-{
-  padding: 19px;
+.card {
+    display: flex;
+    padding: 1rem;
+    background-color: #fff;
+    align-items: center;
+    box-shadow: 0 0.5rem 2rem #609f88;
+    border-radius: 0.7rem;
+    margin-bottom: 23px;
+  }
+   .card-image{
+    border-radius: 0.7rem;
+   }
+  h4.ui-title {
+    background-color: #3ac592;
+    color: #0f3505;
 }
-#signin-page{
+  
+.text-01 {
+    margin: 0.5rem 1rem 0.5rem 1.5rem;
+}
+.text-01 h4 {
+    font-size:2rem;
+   }
+.text-01 h5 {
+    font-size: 25px;
+}
+
+
+/*Signup part*/
+.register {
+    padding: 1.5em 2em;
+    margin: 0;
+}
+
+.register p {
+   font-size: 25px;
+    font-weight: 900;
+}
+
+.register a {
+  text-decoration-line: underline;
+  color:#38612e;
+  font-size: 18px;
+  }
+
+.create-account {
+    text-align: center;
+}
+
+#signin-page,#register-page{
   background-color: #c5f0b7;
+}
+.U-info{
+ font-size: 25px;
+    font-weight: 900;
+    color: #38612e;
 }
 
 
@@ -114,11 +185,17 @@ h1{
    height:100%;
    overflow:hidden;
 }
+
+
+
 [data-role="main"] {
    flex: 1 1 100%;
    overflow:hidden;
    position:relative;
 }
+
+
+
 [data-role="footer"],
 [data-role="header"] {
    flex: none;
@@ -130,6 +207,9 @@ h1{
    position:relative;
    overflow:hidden;
 }
+
+
+
 
 .ui-header .ui-title {
    position:absolute;
@@ -192,25 +272,28 @@ h1{
 .form-control {
     margin: 1em 0;
 }
+
 .ui-mobile .form-label {
     margin: 1em 0;
     font-size: 0.7em;
     color: var(--color-neutral-medium);
 }
+
 .form-input {
     width: 100%;
     display: inline-block;
     border: 1px solid var(--color-neutral-medium);
     margin: 0;
     padding: 0.5em 1em;
-    border-radius: 0.3em;
     outline: 0;
+    margin-bottom: 12px;
     font:inherit;
+    border-radius: 30px;
 }
+
 .form-button {
     margin: 0;
     padding: 0.5em 1em;
-    border-radius: 0.3em;
     border-width:0;
     background-color:var(--color-neutral-light);
     outline: 0;
@@ -219,7 +302,9 @@ h1{
     font:inherit;
     text-align:center;
     cursor:pointer;
+    border-radius: 30px;
 }
+
 .form-button:hover {
    text-decoration:none;
    background-color:var(--color-neutral-medium);
