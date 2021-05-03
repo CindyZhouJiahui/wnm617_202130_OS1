@@ -66,13 +66,20 @@ a:hover {
 
 
 /*LOGO*/
-.logo {
-    width: 40%;
-    left: 120px;
-    top: 7rem;
-    position: absolute;
+.logo{
+    background: url(../img/logo.png) no-repeat;
+    height: 200px;
+    width: 150px;
+    background-size: 100%;
+    margin: 50px auto;
 }
 
+
+
+.logo-text{
+  text-align: center;
+
+}
 
 /*list part*/
 .container {
@@ -94,7 +101,7 @@ a:hover {
     border-radius: 0.7rem;
    }
   h4.ui-title {
-    background-color: #3ac592;
+    background-color:#609f88;
     color: #0f3505;
 }
   
@@ -102,11 +109,16 @@ a:hover {
     margin: 0.5rem 1rem 0.5rem 1.5rem;
 }
 .text-01 h4 {
+    top: 30px;
+    position: relative;
     font-size:2rem;
    }
 .text-01 h5 {
+    position: relative;
+    top: 30px;
     font-size: 25px;
 }
+
 
 
 /*Signup part*/
@@ -116,7 +128,7 @@ a:hover {
 }
 
 .register p {
-   font-size: 25px;
+   font-size: 18px;
     font-weight: 900;
 }
 
@@ -130,7 +142,14 @@ a:hover {
     text-align: center;
 }
 
-#signin-page,#register-page{
+#signin-page{
+    background-color: #c5f0b7;
+    }
+
+
+
+
+#register-page{
   background-color: #c5f0b7;
 }
 .U-info{
@@ -453,9 +472,6 @@ a:hover {
   padding:1em;
   display:block;
 }
-
-
-
 
 
 

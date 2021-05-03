@@ -11,7 +11,7 @@ function makeConn() {
    }
 }
 
-
+   
 function fetchAll($r) {
    $a = [];
    while($row = $r->fetch(PDO::FETCH_OBJ))
@@ -49,7 +49,7 @@ function makeStatement($data) {
       case "users_all":
          return makeQuery($c,"SELECT * FROM `track_202130_users`",$p);
       case "animals_all":
-         return makeQuery($c,"SELECT * FROM `track_202130_animals`",$p);
+         return makeQuery($c,"SELECT * FROM `track_202130_plants`",$p);
       case "locations_all":
          return makeQuery($c,"SELECT * FROM `track_202130_locations`",$p);
 
@@ -57,13 +57,13 @@ function makeStatement($data) {
       case "user_by_id":
          return makeQuery($c,"SELECT * FROM `track_202130_users` WHERE id=?",$p);
       case "animal_by_id":
-         return makeQuery($c,"SELECT * FROM `track_202130_animals` WHERE id=?",$p);
+         return makeQuery($c,"SELECT * FROM `track_202130_plants` WHERE id=?",$p);
       case "location_by_id":
          return makeQuery($c,"SELECT * FROM `track_202130_locations` WHERE id=?",$p);
 
 
       case "animals_by_user_id":
-         return makeQuery($c,"SELECT * FROM `track_202130_animals` WHERE user_id=?",$p);
+         return makeQuery($c,"SELECT * FROM `track_202130_plants` WHERE user_id=?",$p);
       case "locations_by_animal_id":
          return makeQuery($c,"SELECT * FROM `track_202130_locations` WHERE animal_id=?",$p);
 

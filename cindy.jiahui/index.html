@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>plant tracker</title>
-	<!---base---->
-	<base href="  http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/">
-	<!---library code before local code--->
-	<link rel="stylesheet"  href="lib/css/jquery.mobile.structure-1.4.5.min.css">
-	<link rel="stylesheet"  href="css/app.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>plant tracker</title>
+   <!---base---->
+   <!-- <base href="  http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/"> -->
+   <!---library code before local code--->
+   <link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+   <link rel="stylesheet" href="css/app.css">
    <!--(Font)--->
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-   <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet">
-   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lexend&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lexend&display=swap" rel="stylesheet"> 
 
-	<!---script---->
-	<script src="lib/js/jquery-2.2.4.min.js"></script>
+   <!---script---->
+   <script src="lib/js/jquery-2.2.4.min.js"></script>
+   <script src="js/functions.js"></script>
+   <script src="js/page.js"></script>
+   <script src="js/signin.js"></script>
+   <script src="js/app.js"></script>
+   <script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
 
-	<script src="js/signin.js"></script>
 
-	<script src="js/app.js"></script>
-
-	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+   <!--google api--->
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhxy9J3d8TlagMoFjaXl2iYwOzfKALXlU&libraries=&v=weekly"
+      async
+    ></script>
+    <!--AIzaSyBhxy9J3d8TlagMoFjaXl2iYwOzfKALXlU-->
 
 </head>
 <body>
@@ -30,37 +38,40 @@
 
 
 
-<!---Sign In  Page---->
-    <section data-role="page" id="signin-page">
-      <div data-role="main" class="display-flex flex-vertical">
-         <div class="flex-stretch"></div>
-         <div class="logo">
-         <img src="img/logo.png" alt="" height="250" width="150">
-         </div>
-      
-         <div class="flex-none">
-         <div class=text-01>
-            <h4>Welcome !
-            </h4>
-            <h5>
-               Sign in to continue
-            </h5>
-         </div>
-            <form class="form" id="signin-form" data-ajax="false" style="padding:1em">
-               <div class="form-control">
-                  <label for="signin-username" class="form-label">Username</label>
-                  <input class="form-input" type="text" id="signin-username" data-role="none">
+   <!---Sign In  Page---->
+   <section data-role="page" id="signin-page">
+      <div data-role="main" class="display-flex">
+         <div class="overscroll">
+            <div class="logo"></div>
+
+            <div class="logo-text">
+               <h4>Seasonal</h4>
+            </div>
+
+            <div class="flex-none">
+               <div class=text-01>
+                  <h4>Welcome !
+                  </h4>
+                  <h5>
+                     Sign in to continue
+                  </h5>
                </div>
-               <div class="form-control">
-                  <label for="signin-password" class="form-label">Password</label>
-                  <input class="form-input" type="password" id="signin-password" data-role="none">
+               <form class="form" id="signin-form" data-ajax="false" style="padding:1em">
+                  <div class="form-control">
+                     <label for="signin-username" class="form-label">Username</label>
+                     <input class="form-input" type="text" id="signin-username" data-role="none">
+                  </div>
+                  <div class="form-control">
+                     <label for="signin-password" class="form-label">Password</label>
+                     <input class="form-input" type="password" id="signin-password" data-role="none">
+                  </div>
+                  <div class="form-control">
+                     <input type="submit" class="form-button" value="Sign In" data-role="none">
+                  </div>
+               </form>
+               <div class="register">
+                  <p>Don't have an account &nbsp;<a href="#register-page">Register Now!</p></a>
                </div>
-               <div class="form-control">
-                  <input type="submit" class="form-button" value="Sign In" data-role="none">
-               </div>
-            </form>
-            <div class="register">
-            <p>Don't have an account &nbsp;<a href="#register-page">Register Now!</p></a>
             </div>
          </div>
       </div>
@@ -76,339 +87,334 @@
 
 
 
-<!--(Sign up page)-->
-<section data-role="page" id="register-page">
-   <div data-role="main" class="display-flex flex-vertical">
+   <!--(Sign up page)-->
+   <section data-role="page" id="register-page">
+      <div data-role="main" class="display-flex flex-vertical">
          <div class="flex-stretch"></div>
          <div class="flex-none" style="text-align: center;">
             <div class="U-info">Create an acccount!</div>
          </div>
-         
-<!--(Sign up form)--->
-    <div class="flex-none" style="padding:1em">
-    <form action="" id="user-profile-form" data-ajax="false" class="form" style="padding: 1em"> 
-         <div class="form-control">
+
+         <!--(Sign up form)--->
+         <div class="flex-none" style="padding:1em">
+            <form action="" id="user-profile-form" data-ajax="false" class="form" style="padding: 1em">
+               <div class="form-control">
                   <label for="register-username" class="form-label" style="color: #38612e;">Username</label>
                   <input class="form-input" type="text" id="register-username" data-role="none">
-                  </div>
-         <div class="form-control">
+               </div>
+               <div class="form-control">
                   <label for="signin-email" class="form-label">Email</label>
                   <input class="form-input" type="text" id="signin-email" data-role="none">
-                  </div>
-        <div class="form-control">
+               </div>
+               <div class="form-control">
                   <label for="signin-password" class="form-label">Password</label>
                   <input class="form-input" type="password" id="submit-password" data-role="none">
-                  </div>
-        <div class="form-control">
+               </div>
+               <div class="form-control">
                   <label for="signin-username" class="form-label">Confirm Password</label>
                   <input class="form-input" type="text" id="signin-username" data-role="none">
-                  </div>
-        <div class="signin-text" style="text-align: center;">
-               Already have account? <a href="#signin-page" class="signup-link">Sign in</a>
-                  </div>
-        <div class="form-control">
+               </div>
+               <div class="signin-text" style="text-align: center;">
+                  Already have account? <a href="#signin-page" class="signup-link">Sign in</a>
+               </div>
+               <div class="form-control">
                   <input type="submit" class="form-button" value="Registered" data-role="none">
-                  </div>
-                  </form>
-                  </div>
-                  <div class="flex-stretch"></div>
-                  </div>
-</section>
-
-
-         
-
-
-
-
-
-
-
-		
-
-
-<!---RECENT PAGE--->
-	<section data-role="page" id="recent-page" >
-	     <div data-role="main">
-		       <img src="img/map.png">
-	</div>
-	<footer data-role="footer" data-template="#footer-template">
-	</footer>
-	</div>
-	</section>
-
-
-
-
-
-
-
-<!---LIST PAGE--->
-	<section data-role="page" id="list-page">
-		<header data-role="header">
-			<h4>
-         <blod>
-         Plant List
-         </blod>
-         </h4>
-		<ul>
-			<li class="flex-stretch"></li>
-			<li><a href="#" class="js-list-add-plant" 
-			data-activate="#list-add-modal"><img src="img/plus icon.png" alt="" ></a></li>
-		</ul>
-		</header>
-	<div data-role="main">
-<!--div.overscroll-->
-<div class="overscroll">
-<!----list open-->
-<!----ul>li*10>a[href=#plant-profile-page]>{plant $} -->
-
-    <div class="container"> 
-      <div class="card">
-         <div class="card_img">
-			<img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-  <div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-<div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-<div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-<div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-<div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-<div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-<div class="card">
-         <div class="card_img">
-         <img src="img/f1.jpg " alt="" width="150" height="150">
-      </div>
-      <div class="plant-info">
-      <h4>
-           <blod>
-            Type: 
-           </blod>
-      </h4>
-      <p>
-           hydrangea
-      </p>
-       <h4>
-           <blod>
-            Color:
-           </blod>
-      </h4>
-      <p>
-         blue
-      </p>
-      <a href="#plant-profile-page">Read More</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<footer data-role="footer" data-template="#footer-template">
-   </footer>
-
-
-
-
-
-
-<!---add new plant--->
-   <section data-role="page" id="add-plant"></section>
-   <div class="modal" id="list-add-modal">
-         <div class="overscroll">
-         <div class="modal-back" data-deactivate="#list-add-modal"></div>
-         <form class="modal-popup" data-ajax="false" id="list-add-form">
-            <div class="modal-head">plant</div>
-            <div class="modal-body">
-               <div class="form-control">
-                  <label for="list-add-name" class="form-label">Name</label>
-                  <input class="form-input" type="text" id="list-add-name" data-role="none">
                </div>
-               <div class="form-control">
-                  <label for="list-add-type" class="form-label">Type</label>
-                  <input class="form-input" type="text" id="list-add-type" data-role="none">
-               </div>
-               <div class="form-control">
-                  <label for="list-add-breed" class="form-label">Season</label>
-                  <input class="form-input" type="text" id="list-add-breed" data-role="none">
-               </div>
-            </div>
-            <div class="modal-foot display-flex">
-               <div class="flex-stretch"></div>
-               <div class="flex-none">
-                  <a href="#" data-deactivate="#list-add-modal">Submit</a>
-               </div>
-            </div>
-         </form>
+            </form>
+         </div>
+         <div class="flex-stretch"></div>
       </div>
-   </div>
    </section>
 
 
 
 
-<!-- USER DATA SECTION -->
+
+
+
+   <!---RECENT PAGE--->
+   <section data-role="page" id="recent-page">
+      <div data-role="main">
+         <!---.map-icon-test--->
+         <div class="map-icon-test">
+            <img src="img/icon/Location/png" alt="">
+         </div>
+      </div>
+      <footer data-role="footer" data-template="#footer-template"></footer>
+   </section>
+
+
+
+
+
+
+
+   <!---LIST PAGE--->
+   <section data-role="page" id="list-page">
+      <header data-role="header">
+         <h4>
+            <blod>
+               Plant List
+            </blod>
+         </h4>
+         <ul>
+            <li class="flex-stretch"></li>
+            <li><a href="#" class="js-list-add-plant" data-activate="#list-add-modal"><img src="img/plus icon.png"
+                     alt=""></a></li>
+         </ul>
+      </header>
+      <div data-role="main">
+         <!--div.overscroll-->
+         <div class="overscroll">
+            <!----list open-->
+            <!----ul>li*10>a[href=#plant-profile-page]>{plant $} -->
+
+            <div class="container">
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card_img">
+                     <img src="img/f1.jpg " alt="" width="150" height="150">
+                  </div>
+                  <div class="plant-info">
+                     <h4>
+                        <blod>
+                           Type:
+                        </blod>
+                     </h4>
+                     <p>
+                        hydrangea
+                     </p>
+                     <h4>
+                        <blod>
+                           Color:
+                        </blod>
+                     </h4>
+                     <p>
+                        blue
+                     </p>
+                     <a href="#plant-profile-page">Read More</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <footer data-role="footer" data-template="#footer-template">
+      </footer>
+
+
+
+
+
+
+      <!---add new plant--->
+      <section data-role="page" id="add-plant"></section>
+      <div class="modal" id="list-add-modal">
+         <div class="overscroll">
+            <div class="modal-back" data-deactivate="#list-add-modal"></div>
+            <form class="modal-popup" data-ajax="false" id="list-add-form">
+               <div class="modal-head">plant</div>
+               <div class="modal-body">
+                  <div class="form-control">
+                     <label for="list-add-name" class="form-label">Name</label>
+                     <input class="form-input" type="text" id="list-add-name" data-role="none">
+                  </div>
+                  <div class="form-control">
+                     <label for="list-add-type" class="form-label">Type</label>
+                     <input class="form-input" type="text" id="list-add-type" data-role="none">
+                  </div>
+                  <div class="form-control">
+                     <label for="list-add-breed" class="form-label">Season</label>
+                     <input class="form-input" type="text" id="list-add-breed" data-role="none">
+                  </div>
+               </div>
+               <div class="modal-foot display-flex">
+                  <div class="flex-stretch"></div>
+                  <div class="flex-none">
+                     <a href="#" data-deactivate="#list-add-modal">Submit</a>
+                  </div>
+               </div>
+            </form>
+         </div>
+      </div>
+   </section>
+
+
+
+
+   <!-- USER DATA SECTION -->
 
    <section data-role="page" id="user-profile-page">
       <div data-role="main">
          <div class="overscroll">
-         <img src="img/user.png" alt="">
-         <form action="" id="user-profile-form" data-ajax="false" class="form" style="padding: 1em">
+            <img src="img/user.png" alt="">
+            <form action="" id="user-profile-form" data-ajax="false" class="form" style="padding: 1em">
                <div class="form-control">
                   <label for="signin-username" class="form-label">Username</label>
                   <input class="form-input" type="text" id="signin-username" data-role="none">
@@ -433,41 +439,44 @@
                   <label for="signin-location" class="form-label">Location</label>
                   <input class="form-input" type="text" id="submit-password" data-role="none">
                </div>
-               <div class="form-control" >
-                  <a href="#recent-page" class="form-button signin-button">Save</a></div>
-                  <a href="#recent-page" class="form-button signin-button">Edit</a></div>
-                  
-
-               
-            </div>
-  </form>
-
-
-
-         <div class="floater top right">
-            <a href="#" class="icon" data-activate="#user-settings-modal"><img src="img/user icon.png" alt=""></a>
+               <div class="form-control">
+                  <a href="#recent-page" class="form-button signin-button">Save</a>
+               </div>
+               <a href="#recent-page" class="form-button signin-button">Edit</a>
          </div>
 
 
-         <div class="modal" id="user-settings-modal">
-            <div class="modal-drawer right">
-               <div class="modal-head display-flex">
-                  <div class="flex-none">Settings</div>
-                  <div class="flex-stretch"></div>
-                  <div class="flex-none"><a href="#"data-deactivate="#user-settings-modal">&times;</a></div>
-               </div>
-               <div class="modal-body"><div class="overscroll">
+
+      </div>
+      </form>
+
+
+
+      <div class="floater top right">
+         <a href="#" class="icon" data-activate="#user-settings-modal"><img src="img/user icon.png" alt=""></a>
+      </div>
+
+
+      <div class="modal" id="user-settings-modal">
+         <div class="modal-drawer right">
+            <div class="modal-head display-flex">
+               <div class="flex-none">Settings</div>
+               <div class="flex-stretch"></div>
+               <div class="flex-none"><a href="#" data-deactivate="#user-settings-modal">&times;</a></div>
+            </div>
+            <div class="modal-body">
+               <div class="overscroll">
                   <ul>
                      <li>Change Name</li>
                      <li>Change Password</li>
                      <li><a href="#" class="js-logout">
-                        <img src="img/signout icon.png" alt="">
-                     </a></li>
+                           <img src="img/signout icon.png" alt="">
+                        </a></li>
                   </ul>
-               </div>
                </div>
             </div>
          </div>
+      </div>
       </div>
       <footer data-role="footer" data-template="#footer-template"></footer>
    </section>
@@ -478,42 +487,48 @@
 
 
 
-	<!---Plant profile page-->
-	<section data-role="page" id="plant-profile-page">
-	<header data-role="header">
-	<h1>plant</h1>
-	<a href="#" data-rel="back">Back</a>
-	</header>
-	<div data-role="main">
-   <img src="img/logo.png" alt="" height="100%;">
-   </div>
-   <div class="overscroll">
-   <h3>Purple flower</h3>
-   <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa blanditiis unde officiis ullam, reprehenderit </p>
-   <h4>Season</h4>
-   <p>a blanditiis unde officiis ullam, reprehenderit </p>
-   <h4>Descrption</h4>
-   <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa blanditiis unde officiis ullam, reprehenderit perferendis quasi animi explicabo incidunt rerum labore nisi optio ducimus, veniam voluptatibus omnis numquam quaerat eligendi beatae quisquam. Fugit nisi fugiat porro, quasi possimus, quis iure magnam? Architecto, nulla, quo.</p>
-   <h4>Location</h4>
-   <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa blanditiis unde officiis ullam, reprehenderit perferendis quasi animi explicabo incidunt</p></div>
-   <div class="form-control">
-      <div id="edit">
-         <input type="submit" class="form-button" value="Edit" data-role="none">
-               </div>
-               </div>
-   <div class="form-control">
-      <div id="Save">
-         <input type="submit" class="form-button" value="Save" data-role="none">
-               </div>
-               </div>
+   <!---Plant profile page-->
+   <section data-role="page" id="plant-profile-page">
+      <header data-role="header">
+         <h1>plant</h1>
+         <a href="#" data-rel="back">Back</a>
+      </header>
+      <div data-role="main">
+         <img src="img/logo.png" alt="" height="100%;">
+      </div>
+      <div class="overscroll">
+         <h3>Purple flower</h3>
+         <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa
+            blanditiis unde officiis ullam, reprehenderit </p>
+         <h4>Season</h4>
+         <p>a blanditiis unde officiis ullam, reprehenderit </p>
+         <h4>Descrption</h4>
+         <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa
+            blanditiis unde officiis ullam, reprehenderit perferendis quasi animi explicabo incidunt rerum labore nisi
+            optio ducimus, veniam voluptatibus omnis numquam quaerat eligendi beatae quisquam. Fugit nisi fugiat porro,
+            quasi possimus, quis iure magnam? Architecto, nulla, quo.</p>
+         <h4>Location</h4>
+         <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa
+            blanditiis unde officiis ullam, reprehenderit perferendis quasi animi explicabo incidunt</p>
+      </div>
+      <div class="form-control">
+         <div id="edit">
+            <input type="submit" class="form-button" value="Edit" data-role="none">
+         </div>
+      </div>
+      <div class="form-control">
+         <div id="Save">
+            <input type="submit" class="form-button" value="Save" data-role="none">
+         </div>
+      </div>
 
 
 
- 
 
 
-	
-   <script type="text/template" id="footer-template">
+
+
+      <script type="text/template" id="footer-template">
    <ul class="title-icons">
       <li><a href="#recent-page">
          <span class="icon"><img src="img/pin icon.png" alt=""></span>
@@ -530,6 +545,6 @@
    </ul>
    </script>
 
-   <script type="text/template" id="plant-link-template">
+      <script type="text/template" id="plant-link-template">
    this is an plant link
    </script>

@@ -1,14 +1,27 @@
 
-
-const checkSigninForm = () => {
+const checkSigninForm = async () => {
    let username = $("#signin-username").val();
    let password = $("#signin-password").val();
 
-   if(username=="user" && password=="pass") {
+   if(username=='' || password=='') {
+      // warn that not all information is there
+      alert("Please enter the username and password")
+      return;
+   }
+
+   let user = await query({
+      type:'check_signin',
+      params:[username,password]
+   });
+
+   if(user.result.length > 0) {
       console.log("logged in")
-      sessionStorage.userId = 3;
+      sessionStorage.userId = user.result[0].id;
+
+      $("#signin-form")[0].reset();
    } else {
       console.log("logged out")
+      alert("Wrong username or password")
       sessionStorage.removeItem("userId");
    }
 
@@ -17,7 +30,7 @@ const checkSigninForm = () => {
 
 
 const checkUserId = () => {
-   let p = ["#signin-page","#signup-page",""];
+   let p = ["#signin-page","#signup-page","#signup-second-page",""];
 
    if(sessionStorage.userId === undefined) {
       // not logged in

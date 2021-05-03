@@ -1,5 +1,6 @@
 
-
+// https://www.json-generator.com/
+https://konbert.com/convert
 
 
 
@@ -34,36 +35,25 @@
 
 //plant data
 [
-  '{{repeat(50)}}',
+  '{{repeat(250)}}',
   {
     id: '{{index(1)}}',
 
-    user_id: '{{integer(1,10)}}',
+    plant_id: '{{integer(1,50)}}',
 
-
-    type: '{{random("maple_tree","poppy","hydrangea","succulent_plant")}}',
-    color: function(tags){
-      var color = 
-      {
-        maple_tree:['red', 'orange', 'yellow'],
-        poppy:['yellow','orange','red'],
-        hydrangea:['purple','blue','white'],
-        succulent_plant:['green','red']
-      };
-      var chosen_type = color[this.type];
-      var chosen_index = tags.integer(0,chosen_type.length-1);
-      return chosen_type[chosen_index];
-    },
-         
+    lat: '{{floating( 37.786195,37.375627)}}',
+    lng: '{{floating( -122.503861, -122.357262)}}',
+    
     description: '{{lorem(3,"sentences")}}',
-    img:function(tags) {
-      return 'https://via.placeholder.com/400/'+
-        tags.integer(700,999) + '/fff/?text=' + this.name;
-    },
+
+    photo: 'https://via.placeholder.com/400/',
+
+    icon: 'https://via.placeholder.com/400/?text=ICON',
+
     date_create: '{{date(new Date(2021, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
+
   }
 ]
-
 
 
 
@@ -74,14 +64,20 @@
   '{{repeat(250)}}',
   {
     id: '{{index(1)}}',
-    flower_id: '{{integer(1,50)}}',
-    lat: '{{floating( 37.793930,37.806580)}}',
-    lng: '{{floating( -122.457375, -122.438688)}}',
+
+    plant_id: '{{integer(1,50)}}',
+
+    lat: '{{floating( 37.786195,37.375627)}}',
+    lng: '{{floating( -122.503861, -122.357262)}}',
     
     description: '{{lorem(3,"sentences")}}',
+
     photo: 'https://via.placeholder.com/400/',
+
     icon: 'https://via.placeholder.com/400/?text=ICON',
+
     date_create: '{{date(new Date(2021, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
+
   }
 ]
 
