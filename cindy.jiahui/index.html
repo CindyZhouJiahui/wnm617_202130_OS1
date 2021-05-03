@@ -19,6 +19,8 @@
    <!---script---->
    <script src="lib/js/jquery-2.2.4.min.js"></script>
    <script src="js/functions.js"></script>
+   <script src="js/maps.js"></script>
+   <script src="js/parts.js"></script>
    <script src="js/page.js"></script>
    <script src="js/signin.js"></script>
    <script src="js/app.js"></script>
@@ -135,9 +137,15 @@
    <!---RECENT PAGE--->
    <section data-role="page" id="recent-page">
       <div data-role="main">
-         <!---.map-icon-test--->
-         <div class="map-icon-test">
-            <img src="img/icon/Location/png" alt="">
+         <div class="map" style="height:100%"></div>
+         <div class="floater bottom right" style="padding:1em">
+            <a href="#choose-animal-page" class="circle-button">&plus;</a>
+         </div>
+
+         <div class="modal" id="recent-drawer">
+            <div class="modal-drawer modal-card top" style="height: auto;">
+               <div class="modal-body"></div>
+            </div>
          </div>
       </div>
       <footer data-role="footer" data-template="#footer-template"></footer>

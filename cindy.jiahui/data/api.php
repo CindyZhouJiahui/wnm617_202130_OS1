@@ -66,7 +66,21 @@ function makeStatement($data) {
          return makeQuery($c,"SELECT * FROM `track_202130_plants` WHERE user_id=?",$p);
       case "locations_by_animal_id":
          return makeQuery($c,"SELECT * FROM `track_202130_locations` WHERE animal_id=?",$p);
-
+         // l.*, a.user_id, a.type, a.color, a.description as plant_description, a.img
+      
+    
+      case "recent_locations":
+         return makeQuery($c,"SELECT *
+            FROM `track_202130_plants` a
+            RIGHT JOIN (
+               SELECT * FROM `track_202130_locations`
+               ORDER BY `date_create` DESC
+            ) l
+            ON a.id = l.plant_id
+            WHERE a.user_id=?
+            GROUP BY l.plant_id
+            ",$p);
+            
 
       case "check_signin":
          return makeQuery($c,"SELECT id FROM `track_202130_users` WHERE `username`=? AND `password`=md5(?)",$p);

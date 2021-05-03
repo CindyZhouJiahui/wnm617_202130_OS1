@@ -33,12 +33,11 @@ const makeAnimalInfo = o => `
 const makeAnimalPopup = o => `
 <div class="display-flex animal-jump" data-id="${o.animal_id?o.animal_id:o.id}">
    <div class="flex-none animal-image-thumb">
-      <img src="${o.img}">
+      <img src="${o.img}" height="100px">
    </div>
    <div class="flex-none" style="padding:1em">
-      <div class="animal-name">${o.name}</div>
-      <div class="animal-type">${o.type}</div>
-      <div class="animal-breed">${o.breed}</div>
+      <div class="animal-name">${o.type}</div>
+      <div class="animal-type">${o.color}</div>
    </div>
 </div>
 `;
