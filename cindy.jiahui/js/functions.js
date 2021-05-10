@@ -23,3 +23,11 @@ const checkData = (exterior_check) => new Promise((resolve,reject)=>{
    }
    interior_check();
 });
+
+function tips(msg){
+   $("body").append(`<div id="tips">`+msg+`</div>`);
+
+   setTimeout(function(){
+      $("#tips").remove();
+   }, 1500)
+}

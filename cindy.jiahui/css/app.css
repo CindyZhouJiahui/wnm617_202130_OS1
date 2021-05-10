@@ -82,17 +82,53 @@ a:hover {
 }
 
 /*list part*/
+#list-page ul {
+  height: 100%;
+}
+
+#list-page ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#list-page ul li a img{
+  height: 30px;
+  background-color: rgba(255,255,255,1);
+  border-radius: 5px;
+}
+
 .container {
     background-color: #c5f0b7;
-    padding: 1.5rem 1.5rem;
-
-
+    padding: 1rem;
+    min-height: 100%;
 }
+
+.container .card_img {
+  margin-right: 10px;
+}
+
+.container .card_img img {
+  width: 100px;
+  height: auto;
+}
+
+.container .card .plant-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container .card .plant-info span {
+  font-weight: 700;
+  margin-right: 5px;
+}
+
 .card {
     display: flex;
     padding: 1rem;
     background-color: #fff;
-    align-items: center;
     box-shadow: 0 0.5rem 2rem #609f88;
     border-radius: 0.7rem;
     margin-bottom: 23px;
@@ -170,7 +206,7 @@ a:hover {
 .display-inline-flex { display:inline-flex; }
 .display-inline-block { display:inline-block; }
 
-.flex-stretch { flex:1 1 auto; }
+.flex-stretch { flex:1 1 auto;}
 .flex-none { flex:none; }
 
 .flex-align-center { align-items:center; }
@@ -240,6 +276,7 @@ a:hover {
    margin:0;
    font-size:1rem;
    padding:0;
+   color: #ffffff;
 }
 
 
@@ -322,13 +359,26 @@ a:hover {
     text-align:center;
     cursor:pointer;
     border-radius: 30px;
+    color: #ffffff;
 }
 
 .form-button:hover {
    text-decoration:none;
-   background-color:var(--color-neutral-medium);
 }
 
+
+#tips {
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  color: #ffffff;
+  padding: 5px 10px;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
 
 
 
@@ -419,6 +469,7 @@ a:hover {
 .modal-foot {
   background-color:var(--color-neutral-light);
   padding:0.5em 1em;
+  color: #ffffff;
 }
 .modal-body {
   background-color:var(--color-white);
@@ -481,7 +532,7 @@ a:hover {
 /* remove this later */
 .plant-top,
 #recent-page [data-role='main'] {
-  background-image: url('../img/map.png');
+  /* background-image: url('../img/map.png'); */
   background-position:center;
   background-size:cover;
 }
@@ -501,4 +552,22 @@ a:hover {
   flex:1 1 100%;
   position:relative;
   overflow:hidden;
+}
+
+.plant-nav li {
+  text-align:center !important;
+}
+
+#user-profile-page #user-settings-modal ul li {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#user-profile-page .floater .icon img{
+  width: 40px !important;
+  height: 40px !important;
+  padding: 5px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 5px;
+
 }

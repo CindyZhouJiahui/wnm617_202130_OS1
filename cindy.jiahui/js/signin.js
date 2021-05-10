@@ -5,7 +5,7 @@ const checkSigninForm = async () => {
 
    if(username=='' || password=='') {
       // warn that not all information is there
-      alert("Please enter the username and password")
+      tips("Please enter the username and password")
       return;
    }
 
@@ -21,7 +21,7 @@ const checkSigninForm = async () => {
       $("#signin-form")[0].reset();
    } else {
       console.log("logged out")
-      alert("Wrong username or password")
+      tips("Wrong username or password")
       sessionStorage.removeItem("userId");
    }
 

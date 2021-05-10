@@ -80,10 +80,47 @@ function makeStatement($data) {
             WHERE a.user_id=?
             GROUP BY l.plant_id
             ",$p);
-            
+
+      case "update_user_password":
+         $is_arr = [$p[1], $p[2]];
+         $is = makeQuery($c,"SELECT id FROM `track_202130_users` WHERE  `password`=md5(?) AND `id`=?",$is_arr);
+
+         if(count($is["result"]) == 0){
+            return ["result"=>"The old password is incorrect"];
+         }
+         
+         $r = makeQuery($c,"UPDATE
+            `track_202130_users`
+            SET
+            `password` = md5(?)
+            WHERE `password` = md5(?) and `id` = ? 
+            ",$p);
+
+         return ["result"=>"success"];
+
+      case "insert_animal":
+         $name = $p[1];
+         $r = makeQuery($c,"INSERT INTO
+            `track_202130_plants`
+            (`user_id`,`type`,`color`,`description`,`img`,`date_create`)
+            VALUES
+            (?,?,?,?,'https://via.placeholder.com/500/?text=$name',NOW())
+            ",$p,false);
+         return ["id"=>$c->lastInsertId()];
 
       case "check_signin":
          return makeQuery($c,"SELECT id FROM `track_202130_users` WHERE `username`=? AND `password`=md5(?)",$p);
+
+      case "update_user":
+         $r = makeQuery($c,"UPDATE
+            `track_202130_users`
+            SET
+            `username` = ?,
+            `name` = ?,
+            `email` = ?
+            WHERE `id` = ?
+            ",$p,false);
+         return ["result"=>"success"];
 
 
       default:
