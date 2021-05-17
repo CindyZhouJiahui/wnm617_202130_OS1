@@ -43,9 +43,9 @@ const checkSignupSecondForm = () => {
    
 }
 const checkUserEditForm = () => {
-   let username = $("#user-profile-page input[name='username']").val();
-   let name = $("#user-profile-page input[name='name']").val();
-   let email = $("#user-profile-page input[name='email']").val();
+   let username = $("#user-edit-username").val();
+   let name = $("#user-edit-name").val();
+   let email = $("#user-edit-email").val();
    
    query({
       type:"update_user",
@@ -55,7 +55,9 @@ const checkUserEditForm = () => {
          tips(d.error);
          return false;
       }
-      tips("success");
+
+      window.history.go(-1);
+      
    })
 }
 const checkUserPasswordForm = () => {
@@ -75,7 +77,7 @@ const checkUserPasswordForm = () => {
       
    query({
       type:"update_user_password",
-      params:[password, oldpassword, sessionStorage.userId]
+      params:[password,sessionStorage.userId]
    }).then(d=>{
       if(d.error) {
          tips(d.error);
@@ -98,9 +100,9 @@ const checkUserPasswordForm = () => {
 
 
 const checkAnimalAddForm = () => {
-   let type = $("#list-add-modal input[name='type']").val();
-   let color = $("#list-add-modal input[name='color']").val();
-   let description = $("#list-add-modal input[name='description']").val();
+   let type = $("#animal-add-type").val();
+   let color = $("#animal-add-color").val();
+   let description = $("#animal-add-description").val();
 
    if(!type.trim()){
       tips("Please input type name");
@@ -137,20 +139,18 @@ const checkAnimalAddForm = () => {
       
       console.log(d)
       sessionStorage.animalId = d.id;
-      ListPage();
-      tips("success")
+      window.history.go(-1);
    })
 }
 
 const checkAnimalEditForm = () => {
-   let name = $("#animal-edit-name").val();
    let type = $("#animal-edit-type").val();
-   let breed = $("#animal-edit-breed").val();
+   let color = $("#animal-edit-color").val();
    let description = $("#animal-edit-description").val();
 
    query({
       type:"update_animal",
-      params:[name,type,breed,description,sessionStorage.animalId]
+      params:[type,color,description,sessionStorage.animalId]
    }).then(d=>{
       if(d.error) {
          tips(d.error)

@@ -23,7 +23,7 @@ $(()=>{
          case "user-password-page": UserPasswordPage(); break;
          case "animal-profile-page": AnimalProfilePage(); break;
          case "animal-edit-page": AnimalEditPage(); break;
-         // case "list-add-modal": AnimalAddPage(); break;
+         case "animal-add-page": AnimalAddPage(); break;
          case "choose-animal-page": ChooseAnimalPage(); break;
          case "choose-location-page": ChooseLocationPage(); break;
       }
@@ -54,14 +54,14 @@ $(()=>{
       sessionStorage.animalId = $(this).data('id');
       $.mobile.navigate("#animal-profile-page")
    })
-   .on("click",".animal-nav a",function(e){
+   .on("click",".plant-nav a",function(e){
       let id = $(this).parent().index();
       
       $(this).parent().addClass("active")
          .siblings().removeClass("active")
 
       $(this)
-         .closest(".animal-nav").next().children().eq(id)
+         .closest(".plant-nav").next().children().eq(id)
          .addClass("active")
          .siblings().removeClass("active")
    })

@@ -66,8 +66,6 @@ const UserProfilePage = async () => {
       params:[sessionStorage.userId]
    });
 
-
-
    $("#user-profile-page #touxiang").attr('src',user.result[0].img);
 
    $("#user-profile-page .body")
@@ -83,7 +81,9 @@ const UserEditPage = async () => {
    });
 
    $("#user-edit-form")
-         .html(makeUserProfileUpdateForm(user.result[0]));
+         .html(makeUserProfileUpdateForm(user.result[0])+`<div class="form-control">
+         <a class="form-button signin-button user-edit-submit">Save</a>
+      </div>`);
 }
 
 const UserPasswordPage = async () => {
@@ -108,14 +108,12 @@ const AnimalProfilePage = async () => {
       params:[sessionStorage.animalId]
    }).then(r=>{
       let animal = r.result[0];
-      console.log("ANIMAL DATA", animal)
-
       if(!$("#animal-profile-page .active").length) {
-         $("#animal-profile-page .animal-nav li:first-child").addClass("active")
+         $("#animal-profile-page .plant-nav li:first-child").addClass("active")
          $("#animal-profile-page .animal-bottom-section:first-child").addClass("active")
       }
 
-      $("#animal-profile-page .animal-top")
+      $("#animal-profile-page .plant-top")
          .css({backgroundImage:`url(${animal.img})`})
       $("#animal-profile-page .animal-info")
          .html(makeAnimalInfo(animal));
@@ -126,7 +124,6 @@ const AnimalProfilePage = async () => {
       type:'locations_by_animal_id',
       params:[sessionStorage.animalId]
    }).then(async (r)=>{
-      console.log("ANIMAL LOCATIONS", r.result)
       let map_el = await makeMap("#animal-profile-page .map");
       makeMarkers(map_el,r.result)
    });
@@ -140,20 +137,22 @@ const AnimalEditPage = async () => {
 
    $("#animal-edit-form")
       .html(
-         makeAnimalProfileUpdateForm(animal.result[0])
+         makeAnimalProfileUpdateForm(animal.result[0])+`<a href="#" class="form-button animal-edit-submit">Save</a>`
       );
 }
 
-// const AnimalAddPage = async () => {
-//    $("#add-plant .modal-body")
-//       .html(
-//          makeAnimalProfileUpdateForm({
-//             type:"",
-//             color:"",
-//             description:""
-//          },"animal-add")
-//       );
-// }
+const AnimalAddPage = async () => {
+   $("#animal-add-form .form-elements")
+      .html(
+         makeAnimalProfileUpdateForm({
+            type:"",
+            color:"",
+            description:""
+         },"animal-add") + `<div class="form-control">
+                              <a class="form-button signin-button animal-add-submit">Save</a>
+                           </div>`
+      );
+}
 
 
 

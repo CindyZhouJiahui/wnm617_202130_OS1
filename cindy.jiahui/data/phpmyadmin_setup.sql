@@ -62,7 +62,7 @@ CREATE TABLE `track_202130_users` (
   `email` varchar(256) NOT NULL,
   `password` varchar(32) NOT NULL,
   `img` varchar(256) NOT NULL,
-  `date-create` datetime NOT NULL
+  `date_create` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --

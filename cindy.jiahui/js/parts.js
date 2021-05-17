@@ -15,37 +15,24 @@ const makeAnimalList = templater(o=>`
 
 const makeUserProfile = o => `
 <img src="${o.img}" alt="" id="touxiang" style="width: 100%;">
-<form id="user-edit-form" data-ajax="false" class="form" style="padding: 1em">
-   <div class="form-control">
-      <label for="signin-username" class="form-label">Name</label>
-      <input class="form-input" name="name" value="${o.name}" type="text" data-role="none">
-   </div>
-   <div class="form-control">
-      <label for="signin-username" class="form-label">Username</label>
-      <input class="form-input" name="username" value="${o.username}" type="text" data-role="none">
-   </div>
-   <div class="form-control">
-      <label for="signin-email" class="form-label">Email</label>
-      <input class="form-input" name="email" value="${o.email}" type="text" data-role="none">
-   </div>
-
-   <div class="form-control">
-      <a class="form-button signin-button user-edit-submit">Save</a>
-   </div>
-</form>
+<div class="user-profile-description">
+   <div class="item">Name: <span>${o.name}</span></div>
+   <div class="item">Username: <span>${o.username}</span></div>
+   <div class="item">Email: <span>${o.email}</span></div>
+</div>
 `;
 
 const makeAnimalInfo = o => `
-<div class="animal-name">${o.name}</div>
-<div class="animal-type">${o.type}</div>
-<div class="animal-breed">${o.breed}</div>
+<div class="item">Type: <span>${o.type}</span></div>
+<div class="item">Color: <span>${o.color}</span></div>
+<div class="item">Description: <span>${o.description}</span></div>
 `;
 
 
 
 
 const makeAnimalPopup = o => `
-<div class="display-flex animal-jump" data-id="${o.animal_id?o.animal_id:o.id}">
+<div class="display-flex animal-jump" data-id="${o.plant_id?o.plant_id:o.id}">
    <div class="flex-none animal-image-thumb">
       <img src="${o.img}" height="100px">
    </div>
@@ -76,7 +63,7 @@ const FormControlTextarea = ({namespace,name,displayname,type,placeholder,value}
 
 const FormSelectOptions = (options,selected=1) => {
    return options.reduce((r,o)=>{
-      return r+`<option value="${o.id}" ${o.id===selected?'selected':''}>${o.name}</option>`
+      return r+`<option value="${o.id}" ${o.id===selected?'selected':''}>${o.type}</option>`
    },'');
 }
 
@@ -90,32 +77,32 @@ const FormSelect = (options,id,selected=1) => {
 
 
 
-// const makeAnimalProfileUpdateForm = (o,namespace="animal-edit") => `
-// ${FormControlInput({
-//    namespace:namespace,
-//    name:'type',
-//    displayname:'Type',
-//    type:'text',
-//    placeholder:'Type The Plant Type',
-//    value:o.type
-// })}
-// ${FormControlInput({
-//    namespace:namespace,
-//    name:'color',
-//    displayname:'Color',
-//    type:'text',
-//    placeholder:'Type The Plant Color',
-//    value:o.breed
-// })}
-// ${FormControlTextarea({
-//    namespace:namespace,
-//    name:'description',
-//    displayname:'Description',
-//    type:'text',
-//    placeholder:'Type The Animal Description',
-//    value:o.description
-// })}
-// `
+const makeAnimalProfileUpdateForm = (o,namespace="animal-edit") => `
+${FormControlInput({
+   namespace:namespace,
+   name:'type',
+   displayname:'Type',
+   type:'text',
+   placeholder:'Type The Plant Type',
+   value:o.type
+})}
+${FormControlInput({
+   namespace:namespace,
+   name:'color',
+   displayname:'Color',
+   type:'text',
+   placeholder:'Type The Plant Color',
+   value:o.color
+})}
+${FormControlTextarea({
+   namespace:namespace,
+   name:'description',
+   displayname:'Description',
+   type:'text',
+   placeholder:'Type The Animal Description',
+   value:o.description
+})}
+`
 
 
 
