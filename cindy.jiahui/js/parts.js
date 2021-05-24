@@ -18,7 +18,7 @@ const makeUserProfile = o => `
 <div id="touxiang">
    <img src="${o.img}" alt="" style="width: 100%;">
 
-   <a href="#user-upload-page"></a>
+   <a href="#user-upload-page">Edit Photo</a>
 </div>
 <div class="user-profile-description">
    <div class="item">Name: <span>${o.name}</span></div>

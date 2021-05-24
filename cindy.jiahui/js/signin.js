@@ -3,7 +3,6 @@ const checkSigninForm = async () => {
    let username = $("#signin-username").val();
    let password = $("#signin-password").val();
 
-
    if(username=='' || password=='') {
       // warn that not all information is there
       tips("Please enter the username and password")

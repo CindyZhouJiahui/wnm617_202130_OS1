@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 20, 2021 at 06:00 PM
--- Server version: 5.6.51-cll-lve
+-- Generation Time: May 01, 2021 at 05:21 PM
+-- Server version: 5.6.49-cll-lve
 -- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -30,7 +30,7 @@ CREATE TABLE `track_202130_locations` (
   `description` text NOT NULL,
   `photo` varchar(256) NOT NULL,
   `icon` varchar(256) NOT NULL,
-  `date_create` datetime NOT NULL
+  `data_create` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -41,13 +41,12 @@ CREATE TABLE `track_202130_locations` (
 
 CREATE TABLE `track_202130_plants` (
   `id` int(13) NOT NULL,
-  `user_id` int(13) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `usr_id` int(13) NOT NULL,
   `type` varchar(25) NOT NULL,
   `color` varchar(25) NOT NULL,
   `description` text NOT NULL,
   `img` varchar(256) NOT NULL,
-  `date_create` datetime NOT NULL
+  `data_create` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

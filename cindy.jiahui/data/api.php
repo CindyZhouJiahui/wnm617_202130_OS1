@@ -80,7 +80,7 @@ function makeStatement($data) {
          return makeQuery($c,"SELECT * FROM `track_202130_plants` WHERE user_id=?",$p);
       case "locations_by_plant_id":
          return makeQuery($c,"SELECT * FROM `track_202130_locations` WHERE plant_id=?",$p);
-         
+         // l.*, a.user_id, a.type, a.color, a.description as plant_description, a.img
       
       case "recent_locations":
          return makeQuery($c,"SELECT *
@@ -163,7 +163,7 @@ function makeStatement($data) {
             `track_202130_locations`
             (`plant_id`,`lat`,`lng`,`description`,`photo`,`icon`,`date_create`)
             VALUES
-            (?,?,?,?,'https://via.placeholder.com/500/?text=Photo','./img/hydrangea_blue.png',NOW())
+            (?,?,?,?,'https://via.placeholder.com/500/?text=Photo','https://via.placeholder.com/100/?text=Icon',NOW())
             ",$p,false);
          return ["id"=>$c->lastInsertId()];
 
