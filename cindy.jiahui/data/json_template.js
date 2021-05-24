@@ -57,7 +57,8 @@ https://konbert.com/convert
     
     description: '{{lorem(3,"sentences")}}',
     img:function(tags) {
-      return './img/'+this.type+'_'+tags.integer(1,3)+'.png';
+      return 'https://via.placeholder.com/400/'+
+        tags.integer(700,999) + '/fff/?text=' + this.name;
     },
     date_create: '{{date(new Date(2021, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
   }
