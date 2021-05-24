@@ -66,29 +66,32 @@ a {
     height: 200px;
     width: 150px;
     background-size: 100%;
-    margin: 50px auto;
+    margin: 50px auto 0;
 }
 
-
+#signup-page {
+  background-color: var(--color-main-light);
+}
 
 .logo-text{
   text-align: center;
-
+  font-size: 40px;
+  font-weight: 900;
 }
 
 /*list part*/
-#list-page ul {
+#list-page > header ul, #list-page > div ul {
   height: 100%;
 }
 
-#list-page ul li a {
+#list-page > header ul li a, #list-page > div ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-#list-page ul li a img{
+#list-page > header ul li a img, #list-page > div ul li a img{
   height: 30px;
   background-color: rgba(255,255,255,1);
   border-radius: 5px;
@@ -104,15 +107,22 @@ a {
   margin-right: 10px;
 }
 
+/* change for image border*/
 .container .card_img img {
   width: 100px;
-  height: auto;
+    /* height: auto; */
+    height: 100px;
+    border-radius: 20%;
 }
 
 .container .card .plant-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.container .card .plant-info > div{
+  word-break: break-word;
 }
 
 .container .card .plant-info span {
@@ -154,19 +164,19 @@ a {
 
 /*Signup part*/
 .register {
-    padding: 1.5em 2em;
+    padding: 0 2em 1.5em;
     margin: 0;
 }
 
 .register p {
-   font-size: 18px;
-    font-weight: 900;
+   font-size: 12px;
+   font-weight: 900;
 }
 
 .register a {
   text-decoration-line: underline;
   color:#38612e;
-  font-size: 18px;
+  font-size: 14px;
   }
 
 .create-account {
@@ -190,7 +200,26 @@ a {
 }
 
 
-
+.hotdog {
+  display: inline-flex;
+  width: 100%;
+  border-width: 0;
+  background-color: #f0f0f0;
+  border-radius: 2em;
+}
+.hotdog>input {
+  flex: 1;
+  background-color: transparent;
+  border-width: 0;
+  line-height: 2.5;
+  padding: 0 1em;
+  outline: 0;
+  font-size: inherit;
+}
+.hotdog.hovering {
+  background-color:var(--color-white);
+  box-shadow:1px 0 5px rgba(0,0,0,0.2)
+}
 
 
 /* Layout Classes */
@@ -478,7 +507,7 @@ a {
   margin: 20px auto;
 }
 
-.animal-bottom-section.active {
+.plant-bottom-section.active {
   display:block;
 }
 
@@ -564,9 +593,8 @@ a {
   width: 40px !important;
   height: 40px !important;
   padding: 5px;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255);
   border-radius: 5px;
-
 }
 
 
@@ -577,13 +605,29 @@ a {
   height:40vh;
   background-position:center;
   background-size:cover;
+  position: relative;
 }
+
+.plant-top form label {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(255,255,255,1);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.plant-top form label img {
+  width: 30px;
+  height: 30px;
+}
+
 .Plant-bottom {
   flex:1 1 100%;
   position:relative;
   overflow:hidden;
 }
-.animal-bottom-section {
+.plant-bottom-section {
   position:absolute;
   top:0;
   left:0;
@@ -606,10 +650,10 @@ a {
   height:3px;
   background-color: #3ac592;
 }
-.animal-bottom-section {
+.plant-bottom-section {
   display:none;
 }
-.animal-bottom-section.active {
+.plant-bottom-section.active {
   display:block;
 }
 
@@ -651,11 +695,11 @@ a {
   border: 2px solid #ffffff;
 }
 
-.Plant-bottom .animal-info {
+.Plant-bottom .plant-info {
   padding: 20px;
 }
 
-.Plant-bottom .animal-info .item {
+.Plant-bottom .plant-info .item {
   margin: 15px auto;
   line-height: 20px;
   font-weight: 600;
@@ -663,7 +707,7 @@ a {
   padding-bottom: 5px;
 }
 
-.Plant-bottom .animal-info .item span {
+.Plant-bottom .plant-info .item span {
   margin-left: 10px;
   font-weight: 100;
 }
@@ -695,4 +739,62 @@ a {
   color: #ffffff;
   pointer-events:none;
   transform: translateY(-50%);
+}
+
+#touxiang {
+  position: relative;
+}
+
+#touxiang a{
+  background: url(../img/edit_photo.png) no-repeat center;
+  background-size: 30px 30px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+}
+
+.filter-set {
+  overflow:auto;
+}
+.filter {
+  font-weight:bold;
+  padding:0 0.5em;
+}
+
+#list-page .no_list{
+    text-align: center;
+    background-color: #3ac592;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+#user-upload-form img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#user-upload-form .upload-box {
+  margin: 20px auto;
+  position: relative;
+}
+
+#user-upload-form .upload-box input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+
+textarea {
+  height:  150px;
 }

@@ -1,10 +1,11 @@
 
-const makeAnimalList = templater(o=>`
-   <div class="card" data-id="${o.id}">
+const makePlantList = templater(o=>`
+   <div class="card plant-jump" data-id="${o.id}">
       <div class="card_img">
          <img src="${o.img}" alt="" width="150" height="150">
       </div>
       <div class="plant-info">
+         <div><span>Name:</span>${o.name}</div>
          <div><span>Type:</span>${o.type}</div>
          <div><span>Color:</span>${o.color}</div>
          <a href="#plant-profile-page">Read More</a>
@@ -14,7 +15,11 @@ const makeAnimalList = templater(o=>`
 
 
 const makeUserProfile = o => `
-<img src="${o.img}" alt="" id="touxiang" style="width: 100%;">
+<div id="touxiang">
+   <img src="${o.img}" alt="" style="width: 100%;">
+
+   <a href="#user-upload-page"></a>
+</div>
 <div class="user-profile-description">
    <div class="item">Name: <span>${o.name}</span></div>
    <div class="item">Username: <span>${o.username}</span></div>
@@ -22,21 +27,24 @@ const makeUserProfile = o => `
 </div>
 `;
 
-const makeAnimalInfo = o => `
+const makePlantInfo = o => `
+<div class="item">Name: <span>${o.name}</span></div>
 <div class="item">Type: <span>${o.type}</span></div>
 <div class="item">Color: <span>${o.color}</span></div>
 <div class="item">Description: <span>${o.description}</span></div>
+<button class="form-button plant-delete" data-id="${o.id}">Delete</button>
 `;
 
 
 
 
-const makeAnimalPopup = o => `
-<div class="display-flex animal-jump" data-id="${o.plant_id?o.plant_id:o.id}">
-   <div class="flex-none animal-image-thumb">
+const makePlantPopup = o => `
+<div class="display-flex plant-jump" data-id="${o.plant_id?o.plant_id:o.id}">
+   <div class="flex-none plant-image-thumb">
       <img src="${o.img}" height="100px">
    </div>
    <div class="flex-none" style="padding:1em;display: flex;flex-direction: column;justify-content: space-around;">
+      <div><span>Name:</span> ${o.name}</div>
       <div><span>Type:</span> ${o.type}</div>
       <div><span>Color:</span> ${o.color}</div>
    </div>
@@ -77,7 +85,15 @@ const FormSelect = (options,id,selected=1) => {
 
 
 
-const makeAnimalProfileUpdateForm = (o,namespace="animal-edit") => `
+const makePlantProfileUpdateForm = (o,namespace="plant-edit") => `
+${FormControlInput({
+   namespace:namespace,
+   name:'name',
+   displayname:'Name',
+   type:'text',
+   placeholder:'Name The Plant Type',
+   value:o.name
+})}
 ${FormControlInput({
    namespace:namespace,
    name:'type',
@@ -99,7 +115,7 @@ ${FormControlTextarea({
    name:'description',
    displayname:'Description',
    type:'text',
-   placeholder:'Type The Animal Description',
+   placeholder:'Type The Plant Description',
    value:o.description
 })}
 `
@@ -161,3 +177,30 @@ ${FormControlInput({
 
 <a class="form-button signin-button user-password-submit">Save</a>
 `
+
+const makePlantListSet = (plants,missing_text="") => {
+   plant_template = plants.length?
+      makePlantList(plants):
+      `<div class="no_list">${missing_text}</div>`
+
+   $("#list-page .container").html(plant_template);
+}
+
+const capitalize = s => s[0].toUpperCase()+s.substr(1);
+
+const filterList = (plants,type) => {
+   let a = [...(new Set(plants.map(o=>o[type])))];
+   // console.log(a)
+   return templater(o=>o?`<li class="filter" data-field="${type}" data-value="${o}">${capitalize(o)}</li>`:'')(a);
+}
+
+const makeFilterList = (plants) => {
+   return `
+   <li class="filter" data-field="type" data-value="">All</li>
+   |
+   ${filterList(plants,'type')}
+   |
+   ${filterList(plants,'color')}
+   `
+}
+

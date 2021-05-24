@@ -99,13 +99,19 @@ const checkUserPasswordForm = () => {
 
 
 
-const checkAnimalAddForm = () => {
-   let type = $("#animal-add-type").val();
-   let color = $("#animal-add-color").val();
-   let description = $("#animal-add-description").val();
+const checkPlantAddForm = () => {
+   let name = $("#plant-add-name").val();
+   let type = $("#plant-add-type").val();
+   let color = $("#plant-add-color").val();
+   let description = $("#plant-add-description").val();
+
+   if(!name.trim()){
+      tips("Please input type name");
+      return false;
+   }
 
    if(!type.trim()){
-      tips("Please input type name");
+      tips("Please input type type");
       return false;
    }
 
@@ -119,13 +125,14 @@ const checkAnimalAddForm = () => {
       return false;
    }
 
+   $("#list-add-modal input[name='name']").val("");
    $("#list-add-modal input[name='type']").val("");
    $("#list-add-modal input[name='color']").val("");
    $("#list-add-modal input[name='description']").val("");
    
    query({
-      type:"insert_animal",
-      params:[sessionStorage.userId,type,color,description]
+      type:"insert_plant",
+      params:[sessionStorage.userId,name,type,color,description]
    }).then(d=>{
       if(d.error) {
          tips(d.error)
@@ -138,19 +145,20 @@ const checkAnimalAddForm = () => {
       }
       
       console.log(d)
-      sessionStorage.animalId = d.id;
+      sessionStorage.plantId = d.id;
       window.history.go(-1);
    })
 }
 
-const checkAnimalEditForm = () => {
-   let type = $("#animal-edit-type").val();
-   let color = $("#animal-edit-color").val();
-   let description = $("#animal-edit-description").val();
+const checkPlantEditForm = () => {
+   let name = $("#plant-edit-name").val();
+   let type = $("#plant-edit-type").val();
+   let color = $("#plant-edit-color").val();
+   let description = $("#plant-edit-description").val();
 
    query({
-      type:"update_animal",
-      params:[type,color,description,sessionStorage.animalId]
+      type:"update_plant",
+      params:[name,type,color,description,sessionStorage.plantId]
    }).then(d=>{
       if(d.error) {
          tips(d.error)
@@ -165,14 +173,14 @@ const checkAnimalEditForm = () => {
 
 
 const checkLocationAddForm = () => {
-   let animal_id = $("#location-choose-animal").val();
+   let plant_id = $("#location-choose-plant").val();
    let lat = +$("#location-lat").val();
    let lng = +$("#location-lng").val();
    let description = $("#location-description").val();
 
    query({
       type:"insert_location",
-      params:[animal_id,lat,lng,description]
+      params:[plant_id,lat,lng,description]
    }).then(d=>{
       if(d.error) {
          tips(d.error)
@@ -180,4 +188,100 @@ const checkLocationAddForm = () => {
       }
       window.history.go(+$("#location-redirect").val());
    })
+}
+
+const checkUserUploadForm = () => {
+   let upload = $("#user-upload-image").val();
+   if(upload=="") return;
+
+   query({
+      type:'update_user_image',
+      params:[upload,sessionStorage.userId]
+   }).then(d=>{
+      if(d.error) {
+         throw d.error;
+      }
+      window.history.go(-1);
+   })
+}
+
+const checkPlantDelete = (id) => {
+   query({
+      type:'delete_plant',
+      params:[id]
+   }).then(d=>{
+      if(d.error) {
+         throw d.error;
+      }
+      window.history.go(-1);
+   })
+}
+
+const checkSearchForm = async () => {
+   let search = $("#list-search-value").val();
+   
+   let plants = await query({
+      type:'search_plants',
+      params:[search,sessionStorage.userId]
+   });
+
+   makePlantListSet(
+      plants.result,
+      "No results found."
+   );
+}
+
+const checkRecentSearchForm = async () => {
+   let search = $("#recent-search-value").val();
+   console.log(search)
+
+   let locations = await query({
+      type:'search_recent_locations',
+      params:[search,sessionStorage.userId]
+   });
+
+   let valid_plants = locations.result.reduce((r,o)=>{
+      o.icon = o.img;
+      if(o.lat && o.lng) r.push(o);
+      return r;
+   },[]);
+
+   let map_el = await makeMap("#recent-page .map");
+   makeMarkers(map_el,valid_plants);
+
+   map_el.data("markers").forEach((o,i)=>{
+      o.addListener("click",function(){
+
+         /* SIMPLE EXAMPLE */
+         /*sessionStorage.plantId = valid_plants[i].plant_id;
+         $.mobile.navigate("#plant-profile-page");*/
+
+         /* INFOWINDOW EXAMPLE */
+         /*map_el.data("infoWindow")
+            .open(map_el.data("map"),o)
+         map_el.data("infoWindow")
+            .setContent(makePlantPopup(valid_plants[i]))*/
+
+         /* ACTIVATE EXAMPLE */
+         $("#recent-drawer")
+            .addClass("active")
+            .find(".modal-body")
+            .html(makePlantPopup(valid_plants[i]))
+      })
+   })
+   
+}
+
+const checkListFilter = async ({field,value}) => {
+   let plants = value=="" ?
+      await query({
+         type:'plants_by_user_id',
+         params:[sessionStorage.userId]
+      }) :
+      await query({
+         type:'filter_plants',
+         params:[field,value,sessionStorage.userId]
+      });
+
+   makePlantListSet(plants.result,"No plants found");
 }

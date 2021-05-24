@@ -6,33 +6,33 @@ const RecentPage = async () => {
    });
    console.log(locations)
 
-   let valid_animals = locations.result.reduce((r,o)=>{
+   let valid_plants = locations.result.reduce((r,o)=>{
       o.icon = o.img;
       if(o.lat && o.lng) r.push(o);
       return r;
    },[]);
 
    let map_el = await makeMap("#recent-page .map");
-   makeMarkers(map_el,valid_animals);
+   makeMarkers(map_el,valid_plants);
 
    map_el.data("markers").forEach((o,i)=>{
       o.addListener("click",function(){
 
          /* SIMPLE EXAMPLE */
-         /*sessionStorage.animalId = valid_animals[i].animal_id;
-         $.mobile.navigate("#animal-profile-page");*/
+         /*sessionStorage.plantId = valid_plants[i].plant_id;
+         $.mobile.navigate("#plant-profile-page");*/
 
          /* INFOWINDOW EXAMPLE */
          /*map_el.data("infoWindow")
             .open(map_el.data("map"),o)
          map_el.data("infoWindow")
-            .setContent(makeAnimalPopup(valid_animals[i]))*/
+            .setContent(makePlantPopup(valid_plants[i]))*/
 
          /* ACTIVATE EXAMPLE */
          $("#recent-drawer")
             .addClass("active")
             .find(".modal-body")
-            .html(makeAnimalPopup(valid_animals[i]))
+            .html(makePlantPopup(valid_plants[i]))
       })
    })
 }
@@ -44,18 +44,19 @@ const RecentPage = async () => {
 
 
 const ListPage = async () => {
-   let animals = await query({
-      type:'animals_by_user_id',
+   let plants = await query({
+      type:'plants_by_user_id',
       params:[sessionStorage.userId]
    });
 
-   console.log(animals)
+   console.log(plants)
 
-   animal_template = animals.result.length?
-      makeAnimalList(animals.result):
-      `<div class="animallist-item"><div class="animallist-description">No plants yet. Try adding some.</div></div>`
+   $(".filter-set").html(makeFilterList(plants.result))
 
-   $("#list-page .container").html(animal_template);
+   makePlantListSet(
+      plants.result,
+      "No plants yet. Try adding some."
+   );
 }
 
 
@@ -66,7 +67,8 @@ const UserProfilePage = async () => {
       params:[sessionStorage.userId]
    });
 
-   $("#user-profile-page #touxiang").attr('src',user.result[0].img);
+   $("#user-profile-page .modal-body h1")
+   .html(user.result[0].name);
 
    $("#user-profile-page .body")
       .html(makeUserProfile(user.result[0]));
@@ -97,59 +99,67 @@ const UserPasswordPage = async () => {
 }
 
 
+const UserUploadPage = async () => {
+   let user = await query({
+      type:'user_by_id',
+      params:[sessionStorage.userId]
+   });
+
+   $("#user-upload-image").val(user.result[0].img);
+   $("#user-upload-form img").attr("src", user.result[0].img);
+}
 
 
 
-
-
-const AnimalProfilePage = async () => {
+const PlantProfilePage = async () => {
    query({
-      type:'animal_by_id',
-      params:[sessionStorage.animalId]
+      type:'plant_by_id',
+      params:[sessionStorage.plantId]
    }).then(r=>{
-      let animal = r.result[0];
-      if(!$("#animal-profile-page .active").length) {
-         $("#animal-profile-page .plant-nav li:first-child").addClass("active")
-         $("#animal-profile-page .animal-bottom-section:first-child").addClass("active")
+      let plant = r.result[0];
+      if(!$("#plant-profile-page .active").length) {
+         $("#plant-profile-page .plant-nav li:first-child").addClass("active")
+         $("#plant-profile-page .plant-bottom-section:first-child").addClass("active")
       }
 
-      $("#animal-profile-page .plant-top")
-         .css({backgroundImage:`url(${animal.img})`})
-      $("#animal-profile-page .animal-info")
-         .html(makeAnimalInfo(animal));
+      $("#plant-profile-page .plant-top")
+         .css({backgroundImage:`url(${plant.img})`})
+      $("#plant-profile-page .plant-info")
+         .html(makePlantInfo(plant));
    });
    
 
    query({
-      type:'locations_by_animal_id',
-      params:[sessionStorage.animalId]
+      type:'locations_by_plant_id',
+      params:[sessionStorage.plantId]
    }).then(async (r)=>{
-      let map_el = await makeMap("#animal-profile-page .map");
+      let map_el = await makeMap("#plant-profile-page .map");
       makeMarkers(map_el,r.result)
    });
 }
 
-const AnimalEditPage = async () => {
-   let animal = await query({
-      type:'animal_by_id',
-      params:[sessionStorage.animalId]
+const PlantEditPage = async () => {
+   let plant = await query({
+      type:'plant_by_id',
+      params:[sessionStorage.plantId]
    });
 
-   $("#animal-edit-form")
+   $("#plant-edit-form")
       .html(
-         makeAnimalProfileUpdateForm(animal.result[0])+`<a href="#" class="form-button animal-edit-submit">Save</a>`
+         makePlantProfileUpdateForm(plant.result[0])+`<a href="#" class="form-button plant-edit-submit">Save</a>`
       );
 }
 
-const AnimalAddPage = async () => {
-   $("#animal-add-form .form-elements")
+const PlantAddPage = async () => {
+   $("#plant-add-form .form-elements")
       .html(
-         makeAnimalProfileUpdateForm({
+         makePlantProfileUpdateForm({
+            name: "",
             type:"",
             color:"",
             description:""
-         },"animal-add") + `<div class="form-control">
-                              <a class="form-button signin-button animal-add-submit">Save</a>
+         },"plant-add") + `<div class="form-control">
+                              <a class="form-button signin-button plant-add-submit">Save</a>
                            </div>`
       );
 }
@@ -158,13 +168,13 @@ const AnimalAddPage = async () => {
 
 
 
-const ChooseAnimalPage = async () => {
+const ChoosePlantPage = async () => {
    let d = await query({
-      type:'animals_by_user_id',
+      type:'plants_by_user_id',
       params:[sessionStorage.userId]
    });
    
-   $("#location-choose-animal")
+   $("#location-choose-plant")
       .html(FormSelectOptions(d.result))
 }
 const ChooseLocationPage = async () => {

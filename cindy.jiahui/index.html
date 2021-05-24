@@ -5,6 +5,8 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>plant tracker</title>
+   <link rel="apple-touch-icon" href="./img/logo.png">
+   <link rel="icon" href="./img/logo.png">
    <!---base---->
    <!-- <base href="  http://jiahuizhounygmail.com/aau/wnm617_001/cindy.jiahui/"> -->
    <!---library code before local code--->
@@ -44,7 +46,7 @@
             <div class="logo"></div>
 
             <div class="logo-text">
-               <h4>Seasonal</h4>
+               Seasonal
             </div>
 
             <div class="flex-none">
@@ -55,7 +57,7 @@
                      Sign in to continue
                   </h5>
                </div>
-               <form class="form" id="signin-form" data-ajax="false" style="padding:1em">
+               <form class="form" id="signin-form" data-ajax="false" style="padding:1em; padding-bottom: 0;">
                   <div class="form-control">
                      <label for="signin-username" class="form-label">Username</label>
                      <input class="form-input" type="text" id="signin-username" data-role="none">
@@ -146,10 +148,20 @@
 
    <!---RECENT PAGE--->
    <section data-role="page" id="recent-page">
+      <header data-role="header">
+         <ul>
+            <li class="flex-stretch" style="padding-left:0.5em">
+               <form data-ajax="false" id="recent-search" class="hotdog">
+                  <input type="search" autocomplete="off" id="recent-search-value" data-role="none" placeholder="Search">
+               </form>
+            </li>
+         </ul>
+      </header>
+
       <div data-role="main">
          <div class="map" style="height:100%"></div>
          <div class="floater bottom right" style="padding:1em; position: relative;">
-            <a href="#choose-animal-page" class="add circle-button js-add-from-recent">&plus;</a>
+            <a href="#choose-plant-page" class="add circle-button js-add-from-recent">&plus;</a>
          </div>
 
          <div class="modal" id="recent-drawer">
@@ -163,17 +175,24 @@
 
 
    <!---profile PAGE--->
-   <section data-role="page" id="animal-profile-page">
+   <section data-role="page" id="plant-profile-page">
       <div data-role="main" class="display-flex flex-vertical">
+         
          <div class="plant-top">
             <div class="floater top left header no-touch"
                style="background-image: linear-gradient(180deg, #ffffff96, #ffffff00);">
                <ul>
                   <li class="flex-none do-touch"><a href="#" data-rel="back">Back</a></li>
                   <li class="flex-stretch"></li>
-                  <li class="flex-none do-touch"><a href="#animal-edit-page">Edit</a></li>
+                  <li class="flex-none do-touch"><a href="#plant-edit-page">Edit</a></li>
                </ul>
             </div>
+
+            <form data-ajax="false" id="plant-update-image-form">
+               <input type="file" id="plant-update-image-input" class="hidden" data-role="none">
+               <label for="plant-update-image-input"><img src="./img/edit_photo.png"></label>
+            </form>
+
          </div>
 
          <div class="header plant-nav">
@@ -183,18 +202,18 @@
             </ul>
          </div>
          <div class="Plant-bottom">
-            <div class="animal-bottom-section animal-map">
+            <div class="plant-bottom-section plant-map">
                <div class="map" style="height: 100%;"></div>
-               <a class="add js-choose-animal" href="#choose-location-page">&plus;</a>
+               <a class="add js-choose-plant" href="#choose-location-page">&plus;</a>
             </div>
-            <div class="animal-bottom-section animal-info"></div>
+            <div class="plant-bottom-section plant-info"></div>
          </div>
       </div>
    </section>
 
-   <section data-role="page" id="animal-edit-page">
+   <section data-role="page" id="plant-edit-page">
       <header data-role="header">
-         <h1>Edit Animal</h1>
+         <h1>Edit Plant</h1>
          <ul>
             <li><a href="#" data-rel="back">Cancel</a></li>
             <li class="flex-stretch"></li>
@@ -202,16 +221,16 @@
       </header>
       <div data-role="main" class="display-flex flex-vertical">
          <div class="overscroll">
-            <form id="animal-edit-form" data-ajax="false" style="padding:1em">
+            <form id="plant-edit-form" data-ajax="false" style="padding:1em">
                
             </form>
          </div>
       </div>
    </section>
 
-   <section data-role="page" id="choose-animal-page">
+   <section data-role="page" id="choose-plant-page">
       <header data-role="header">
-         <h1>Choose Animal</h1>
+         <h1>Choose Plant</h1>
          <ul>
             <li><a href="#" data-rel="back">Cancel</a></li>
             <li class="flex-stretch"></li>
@@ -222,12 +241,12 @@
          <div class="overscroll">
             <form style="padding:1em">
                <div>
-                  <a href="#animal-add-page" class="form-button">Create New Animal</a>
+                  <a href="#plant-add-page" class="form-button">Create New Plant</a>
                </div>
                <p style="text-align:center; margin: 20px auto;">Or Choose One Below</p>
-               <div class="animal-choices">
+               <div class="plant-choices">
                   <div class='form-select'>
-                     <select id="location-choose-animal" data-role="none"></select>
+                     <select id="location-choose-plant" data-role="none"></select>
                   </div>
                </div>
             </form>
@@ -253,7 +272,7 @@
 
    <section data-role="page" id="location-description-page">
       <header data-role="header">
-         <h1>Describe Animal</h1>
+         <h1>Describe Plant</h1>
          <ul>
             <li><a href="#" data-rel="back">Back</a></li>
             <li class="flex-stretch"></li>
@@ -284,12 +303,27 @@
          <ul style="height: 100%;">
             <li class="flex-stretch"></li>
             <li>
-               <a href="#animal-add-page" class="js-list-add-plant">
+               <a href="#plant-add-page" class="js-list-add-plant">
                   <img src="img/plus icon.png" alt="">
                </a>
             </li>
          </ul>
       </header>
+
+      <header data-role="header">
+         <ul>
+            <li class="flex-stretch" style="padding-left:0.5em">
+               <form data-ajax="false" id="list-search" class="hotdog">
+                  <input type="search" id="list-search-value" data-role="none" placeholder="Search">
+               </form>
+            </li>
+         </ul>
+      </header>
+      
+      <header data-role="header">
+         <ul class="filter-set"></ul>
+      </header>
+
       <div data-role="main">
          <!--div.overscroll-->
          <div class="overscroll">
@@ -339,7 +373,7 @@
                <div class="modal-foot display-flex">
                   <div class="flex-stretch"></div>
                   <div class="flex-none">
-                     <a href="#" data-deactivate="#list-add-modal" class="animal-add-submit">Submit</a>
+                     <a href="#" data-deactivate="#list-add-modal" class="plant-add-submit">Submit</a>
                   </div>
                </div>
             </form>
@@ -348,9 +382,9 @@
    </section>
 
 
-   <section data-role="page" id="animal-add-page">
+   <section data-role="page" id="plant-add-page">
       <header data-role="header">
-         <h1>Add Animal</h1>
+         <h1>Add Plant</h1>
          <ul>
             <li><a href="#" data-rel="back">Back</a></li>
             <li class="flex-stretch"></li>
@@ -358,8 +392,8 @@
       </header>
       <div data-role="main" class="display-flex flex-vertical">
          <div class="overscroll">
-            <form id="animal-add-form" data-ajax="false" style="padding:1em">
-               <input type='hidden' id='animal-add-location'>
+            <form id="plant-add-form" data-ajax="false" style="padding:1em">
+               <input type='hidden' id='plant-add-location'>
                <div class="form-elements"></div>
             </form>
          </div>
@@ -378,7 +412,7 @@
       </div>
 
       <div class="floater top right">
-         <a href="#" class="icon" data-activate="#user-settings-modal"><img src="img/user icon.png" alt=""></a>
+         <a href="#" class="icon" data-activate="#user-settings-modal"><img src="img/List icon.png" alt=""></a>
       </div>
 
 
@@ -450,47 +484,30 @@
       </div>
    </section>
 
-
-
-
-   <!---Plant profile page-->
-   <section data-role="page" id="plant-profile-page">
+   <section data-role="page" id="user-upload-page">
       <header data-role="header">
-         <h1>plant</h1>
-         <a href="#" data-rel="back">Back</a>
+         <h1>Upload Photo</h1>
+         <ul>
+            <li><a href="#" data-rel="back">Cancel</a></li>
+            <li class="flex-stretch"></li>
+         </ul>
       </header>
-      <div data-role="main">
-         <img src="img/f1.jpg" alt="" height="100%;">
-      </div>
-         <h3>Purple flower</h3>
-         <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa
-            blanditiis unde officiis ullam, reprehenderit </p>
-         <h4>Season</h4>
-         <p>a blanditiis unde officiis ullam, reprehenderit </p>
-         <h4>Descrption</h4>
-         <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa
-            blanditiis unde officiis ullam, reprehenderit perferendis quasi animi explicabo incidunt rerum labore nisi
-            optio ducimus, veniam voluptatibus omnis numquam quaerat eligendi beatae quisquam. Fugit nisi fugiat porro,
-            quasi possimus, quis iure magnam? Architecto, nulla, quo.</p>
-         <h4>Location</h4>
-         <p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam qui officia aliquam inventore odit ipsa
-            blanditiis unde officiis ullam, reprehenderit perferendis quasi animi explicabo incidunt</p>
-      <div class="form-control">
-         <div id="edit">
-            <input type="submit" class="form-button" value="Edit" data-role="none">
+      <div data-role="main" class="display-flex flex-vertical">
+         <div class="overscroll">
+            <form id="user-upload-form" data-ajax="false" style="padding:1em">
+               <img src="">
+               <input type="hidden" class="upload-image-input" id="user-upload-image">
+
+               <div class="upload-box image-uploader">
+                  <input type="file" data-role="none" id="user-upload-input">
+                  <a class="form-button signin-button">Edit</a>
+               </div>
+               
+               <a class="form-button signin-button user-upload-submit">Save</a>
+            </form>
          </div>
       </div>
-      <div class="form-control">
-         <div id="Save">
-            <input type="submit" class="form-button" value="Save" data-role="none">
-         </div>
-      </div>
-
-
-
-
-
-
+   </section>
 
       <script type="text/template" id="footer-template">
    <ul class="title-icons">

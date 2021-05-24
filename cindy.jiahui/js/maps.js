@@ -93,7 +93,7 @@ let mapStyles = [
     {
         "stylers": [
             {
-                "hue": "#2c3e50"
+                "hue": "#c5f0b7"
             },
             {
                 "saturation": 250

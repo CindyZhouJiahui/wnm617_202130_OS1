@@ -15,7 +15,7 @@ https://konbert.com/convert
     return 'user'+this.id;
     },
     email: function() {
-    return this.username + 'gmail.com';
+    return this.username + '@gmail.com';
     },
     password:'md5(pass)',
     img:function(tags){
@@ -35,25 +35,35 @@ https://konbert.com/convert
 
 //plant data
 [
-  '{{repeat(250)}}',
+  '{{repeat(50)}}',
   {
     id: '{{index(1)}}',
-
-    plant_id: '{{integer(1,50)}}',
-
-    lat: '{{floating( 37.786195,37.375627)}}',
-    lng: '{{floating( -122.503861, -122.357262)}}',
+    user_id: '{{integer(1,10)}}',
+    
+    name: '{{company()}}',
+    
+    type: '{{random("tree","succulent_plant","flower")}}',
+    color: function(tags) {
+      var colors = {
+        tree:["green","orange","pink"],
+        flower:["red","orange","yellow"],
+        succulent_plant:["green","yellow","red"]
+       
+      };
+      var chosen_type = colors[this.type];
+      var chosen_index = tags.integer(0,chosen_type.length-1);
+      return chosen_type[chosen_index];
+    },
     
     description: '{{lorem(3,"sentences")}}',
-
-    photo: 'https://via.placeholder.com/400/',
-
-    icon: 'https://via.placeholder.com/400/?text=ICON',
-
+    img:function(tags) {
+      return './img/'+this.type+'_'+tags.integer(1,3)+'.png';
+    },
     date_create: '{{date(new Date(2021, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
-
   }
 ]
+
+
 
 
 
@@ -67,14 +77,14 @@ https://konbert.com/convert
 
     plant_id: '{{integer(1,50)}}',
 
-    lat: '{{floating( 37.786195,37.375627)}}',
-    lng: '{{floating( -122.503861, -122.357262)}}',
+    lat: '{{floating(37.987447,37.214667)}}',
+    lng: '{{floating(-122.487794,-121.417405)}}',
     
     description: '{{lorem(3,"sentences")}}',
 
     photo: 'https://via.placeholder.com/400/',
 
-    icon: 'https://via.placeholder.com/400/?text=ICON',
+    icon: './img/hydrangea_blue.png',
 
     date_create: '{{date(new Date(2021, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 

@@ -21,10 +21,11 @@ $(()=>{
          case "user-profile-page": UserProfilePage(); break;
          case "user-edit-page": UserEditPage(); break;
          case "user-password-page": UserPasswordPage(); break;
-         case "animal-profile-page": AnimalProfilePage(); break;
-         case "animal-edit-page": AnimalEditPage(); break;
-         case "animal-add-page": AnimalAddPage(); break;
-         case "choose-animal-page": ChooseAnimalPage(); break;
+         case "user-upload-page": UserUploadPage(); break;
+         case "plant-profile-page": PlantProfilePage(); break;
+         case "plant-edit-page": PlantEditPage(); break;
+         case "plant-add-page": PlantAddPage(); break;
+         case "choose-plant-page": ChoosePlantPage(); break;
          case "choose-location-page": ChooseLocationPage(); break;
       }
    })
@@ -43,6 +44,43 @@ $(()=>{
       e.preventDefault();
       checkSignupSecondForm();
    })
+   .on("submit","#list-search",function(e){
+      e.preventDefault();
+      checkSearchForm();
+   })
+   .on("submit","#recent-search",function(e){
+      e.preventDefault();
+      checkRecentSearchForm();
+   })
+
+   .on("change",".image-uploader input",function(e){
+      checkUpload(this.files[0])
+      .then(d=>{
+         console.log(d)
+         $(".upload-image-input").val('uploads/'+d.result);
+         $("#user-upload-form img").attr("src", 'uploads/'+d.result);
+      })
+   })
+
+   .on("change","#plant-update-image-input",function(e){
+      checkUpload(this.files[0])
+      .then(d=>{
+         console.log(d)
+         if(d.error) throw "Uploading failed: "+d.error;
+
+         let image_location = 'uploads/'+d.result;
+         query({
+            type:'update_plant_image',
+            params:[image_location,sessionStorage.plantId]
+         }).then(d=>{
+            if(d.error) {
+               throw d.error;
+            }
+            $("#plant-profile-page .plant-top")
+               .css({"background-image":`url(${image_location})`})
+         })
+      })
+   })
 
 
    /* ANCHOR CLICKS */
@@ -50,9 +88,9 @@ $(()=>{
       sessionStorage.removeItem('userId');
       checkUserId();
    })
-   .on("click",".animal-jump",function(e){
-      sessionStorage.animalId = $(this).data('id');
-      $.mobile.navigate("#animal-profile-page")
+   .on("click",".plant-jump",function(e){
+      sessionStorage.plantId = $(this).data('id');
+      $.mobile.navigate("#plant-profile-page")
    })
    .on("click",".plant-nav a",function(e){
       let id = $(this).parent().index();
@@ -65,29 +103,38 @@ $(()=>{
          .addClass("active")
          .siblings().removeClass("active")
    })
-   .on("click",".js-choose-animal",function(e){
-      $("#location-choose-animal")
-         .html(FormSelectOptions([{id:sessionStorage.animalId,name:"chosen"}]))
+   .on("click",".js-choose-plant",function(e){
+      $("#location-choose-plant")
+         .html(FormSelectOptions([{id:sessionStorage.plantId,name:"chosen"}]))
       $("#location-redirect").val(-2);
    })
    .on("click",".js-add-from-recent",function(e){
       $("#location-redirect").val(-3);
    })
-   .on("click",".animal-add-submit",function(e){
-      checkAnimalAddForm();
+   .on("click",".plant-add-submit",function(e){
+      checkPlantAddForm();
    })
-   .on("click",".animal-edit-submit",function(e){
-      checkAnimalEditForm();
+   .on("click",".plant-edit-submit",function(e){
+      checkPlantEditForm();
    })
    .on("click",".user-edit-submit",function(e){
       checkUserEditForm();
       return false;
+   })
+   .on("click",".user-upload-submit",function(e){
+      checkUserUploadForm();
    })
    .on("click",".user-password-submit",function(e){
       checkUserPasswordForm();
    })
    .on("click",".location-add-submit",function(e){
       checkLocationAddForm();
+   })
+   .on("click",".plant-delete",function(e){
+      checkPlantDelete($(this).data('id'));
+   })
+   .on("click",".filter",function(e){
+      checkListFilter($(this).data());
    })
 
 
